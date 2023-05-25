@@ -13,6 +13,9 @@ public class HealthBarControllerScript : MonoBehaviour
 	[SerializeField] private Slider slider;
 	
 	public int currentHealth;
+	
+	[SerializeField] private Gradient grad;
+	[SerializeField] private Image fill;
 
 
 
@@ -36,11 +39,15 @@ public class HealthBarControllerScript : MonoBehaviour
 	
 	public void setHealth(int val){
 		slider.value = val;
+		fill.color = grad.Evaluate(slider.normalizedValue);
+		
 	}
 	
 	public void setMaxHealth(int max){
 		slider.maxValue = max;
 		slider.value = max;
+		
+		fill.color = grad.Evaluate(1f);
 	}
 	
 	public void damageTank(int val){
