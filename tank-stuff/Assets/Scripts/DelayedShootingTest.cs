@@ -13,9 +13,7 @@ public class DelayedShootingTest : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-       
-        StartCoroutine(Shooting());
-        
+       StartCoroutine(Shooting());   
     }
 
     IEnumerator Shooting()
