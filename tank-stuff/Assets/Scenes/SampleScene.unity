@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 102043163}
   - component: {fileID: 102043162}
   - component: {fileID: 102043165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fc7ffcf9dd1d4d248b2c66e7ecad0e2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -578,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771492548}
   - component: {fileID: 771492549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2756,7 +2756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1209766509}
   - component: {fileID: 1209766510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3005,7 +3005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431411854}
   - component: {fileID: 1431411855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3244,7 +3244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1779902589}
   - component: {fileID: 1779902590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
