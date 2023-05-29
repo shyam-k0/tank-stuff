@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef21a838723dce64c94000f8e796879c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
   rotationSpeed: 200
   pushForce: 2000
 --- !u!61 &102043163
@@ -490,8 +490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1243450119}
   bulletPrefab: {fileID: 5222620907303139803, guid: 4af5bf28153aef8418a5118470d3fe17, type: 3}
-  bulletSpeed: 8
-  delay: 0.3
+  bulletSpeed: 10
+  delay: 0.2
 --- !u!1 &364441396
 GameObject:
   m_ObjectHideFlags: 0
