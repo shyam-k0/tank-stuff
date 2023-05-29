@@ -30,23 +30,12 @@ public class TankMoveScript : MonoBehaviour
 		transform.Rotate(Vector3.forward * rotation);
 		
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-				
-		
-    }
 	
 	void OnCollisionEnter2D(Collision2D c){
 		
 		if (c.gameObject.tag == "Wall"){
 			Debug.Log(temp++);
 			Vector2 dir = (Vector2)transform.position - (Vector2)c.GetContact(0).point;
-			//Vector2 dir = rb.velocity;
-			//Debug.Log("point1: " + transform.position);
-			//Debug.Log("point2: " + c.GetContact(0).point);
-			//Debug.Log("on col: " + dir);
 			dir.Normalize();
 			
 			gameObject.GetComponent<Rigidbody2D>().AddForce(dir * pushForce);
