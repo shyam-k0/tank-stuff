@@ -9,6 +9,9 @@ public class TankMoveScript : MonoBehaviour
 	private float horizontalInput;
 	
 	Rigidbody2D rb;
+	private int temp = 0;
+	
+	[SerializeField] private float pushForce = 0;
 	
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,7 @@ public class TankMoveScript : MonoBehaviour
 		
 		horizontalInput = Input.GetAxisRaw("Horizontal");
 		float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
-		Debug.Log(horizontalInput);
+		//Debug.Log(rb.velocity);
 		transform.Rotate(Vector3.forward * rotation);
 		
 	}
@@ -31,16 +34,23 @@ public class TankMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		// Forward Movement
-		//Debug.Log(transform.up);
-        //transform.Translate(transform.up * speed * Time.deltaTime);
-		
-		// Roational Movement
-		//horizontalInput = Input.GetAxisRaw("Horizontal");
-		//float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
-		//Debug.Log(horizontalInput);
-		//transform.Rotate(Vector3.forward * rotation);
-		
+				
 		
     }
+	
+	/*void OnCollisionEnter2D(Collision2D c){
+		
+		if (c.gameObject.tag == "Wall"){
+			Debug.Log(temp++);
+			Vector2 dir = (Vector2)transform.position - (Vector2)c.GetContact(0).point;
+			//Vector2 dir = rb.velocity;
+			//Debug.Log("point1: " + transform.position);
+			//Debug.Log("point2: " + c.GetContact(0).point);
+			//Debug.Log("on col: " + dir);
+			dir.Normalize();
+			
+			gameObject.GetComponent<Rigidbody2D>().AddForce(dir * pushForce);
+			
+		}
+	}*/
 }
