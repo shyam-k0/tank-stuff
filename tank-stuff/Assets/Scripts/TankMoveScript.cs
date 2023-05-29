@@ -38,7 +38,7 @@ public class TankMoveScript : MonoBehaviour
 		
     }
 	
-	/*void OnCollisionEnter2D(Collision2D c){
+	void OnCollisionEnter2D(Collision2D c){
 		
 		if (c.gameObject.tag == "Wall"){
 			Debug.Log(temp++);
@@ -52,5 +52,5 @@ public class TankMoveScript : MonoBehaviour
 			gameObject.GetComponent<Rigidbody2D>().AddForce(dir * pushForce);
 			
 		}
-	}*/
+	}
 }
