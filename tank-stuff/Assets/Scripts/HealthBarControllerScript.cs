@@ -24,6 +24,7 @@ public class HealthBarControllerScript : MonoBehaviour
     {
         setMaxHealth(100);
 		currentHealth = 100;
+		cam = Camera.main;
     }
 
     // Update is called once per frame

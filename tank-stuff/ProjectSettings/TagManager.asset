@@ -43,3 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 566355659
+    locked: 0
+  - name: Grid
+    uniqueID: 1215164517
+    locked: 0
+  - name: Tank
+    uniqueID: 4210248419
+    locked: 0
+  - name: Projectile
+    uniqueID: 1329682441
+    locked: 0

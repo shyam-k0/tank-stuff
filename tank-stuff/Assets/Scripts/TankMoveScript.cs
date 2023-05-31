@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TankMoveScript : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class TankMoveScript : MonoBehaviour
 	private void FixedUpdate(){
 		rb.velocity = transform.up * speed;
 		
-		horizontalInput = Input.GetAxisRaw("Horizontal");
+		//horizontalInput = Input.GetAxisRaw("Horizontal");
 		float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
 		//Debug.Log(rb.velocity);
 		transform.Rotate(Vector3.forward * rotation);
@@ -41,5 +42,9 @@ public class TankMoveScript : MonoBehaviour
 			gameObject.GetComponent<Rigidbody2D>().AddForce(dir * pushForce);
 			
 		}
+	}
+	
+	public void OnMove(InputAction.CallbackContext context){
+		horizontalInput = context.ReadValue<Vector2>().x;
 	}
 }
