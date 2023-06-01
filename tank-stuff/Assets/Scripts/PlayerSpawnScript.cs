@@ -28,13 +28,11 @@ public class PlayerSpawnScript : MonoBehaviour
 		
 		for (int i = 0; i < 2; i++){		
 			players[i] = pim.JoinPlayer(i, -1, "KB", Keyboard.current);
+			players[i].gameObject.transform.position = spawnPos[i];
 		}
 		
 		players[0].SwitchCurrentActionMap("TankWASD");
 		players[1].SwitchCurrentActionMap("TankArrows");
-		
-		players[0].gameObject.transform.position = spawnPos[0];
-		players[1].gameObject.transform.position = spawnPos[1];
 
 	}
 }
