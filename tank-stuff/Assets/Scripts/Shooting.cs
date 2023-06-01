@@ -11,6 +11,8 @@ public class Shooting : MonoBehaviour
     public float bulletSpeed = 5f;
     public float delay = 0.4f;
 
+    public HealthBarControllerScript tankDamageTaken;
+
     // Update is called once per frame
     void Start()
     {
@@ -26,6 +28,17 @@ public class Shooting : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
             yield return new WaitForSeconds(delay);
+        }
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+
+        if (col.gameObject.tag == "Projectile")
+        {
+            tankDamageTaken.damageTank(10);
+            Destroy(col.gameObject);
+            Debug.Log("Collision");
+
         }
     }
 }
