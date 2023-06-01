@@ -9,6 +9,8 @@ public class PlayerSpawnScript : MonoBehaviour
 	[SerializeField] private GameObject prefab;
 	[SerializeField] private PlayerInputManager pim;
 	private PlayerInput[] players = new PlayerInput[2];
+	
+	private Vector3[] spawnPos = {new Vector3(-7, -3, 0), new Vector3(7, -3, 0)};
 
 	
     // Start is called before the first frame update
@@ -30,6 +32,9 @@ public class PlayerSpawnScript : MonoBehaviour
 		
 		players[0].SwitchCurrentActionMap("TankWASD");
 		players[1].SwitchCurrentActionMap("TankArrows");
+		
+		players[0].gameObject.transform.position = spawnPos[0];
+		players[1].gameObject.transform.position = spawnPos[1];
 
 	}
 }
