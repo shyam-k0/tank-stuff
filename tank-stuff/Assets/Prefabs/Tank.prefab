@@ -707,9 +707,17 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8b2c11c7-a0ec-470c-b26b-9998ba5f43e2
     m_ActionName: Tank2/Turn[/Keyboard/leftArrow,/Keyboard/rightArrow]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Tank2
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 826e895f-a211-479e-b039-7c9512b62e53
+    m_ActionName: TankWASD/Join[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 14c41146-935e-40a3-be08-b40acbec61fb
+    m_ActionName: TankArrows/Join[/Keyboard/j]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: KB
+  m_DefaultActionMap: TankWASD
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!50 &9075051441591106248
