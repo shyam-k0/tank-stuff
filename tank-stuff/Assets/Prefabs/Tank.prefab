@@ -799,6 +799,7 @@ MonoBehaviour:
   bulletSpeed: 10
   delay: 0.2
   tankDamageTaken: {fileID: 9075051441542862540}
+  timeToColor: 0.05
 --- !u!1 &9075051441985437880
 GameObject:
   m_ObjectHideFlags: 0
