@@ -2454,9 +2454,8 @@ GameObject:
   - component: {fileID: 1355517561}
   - component: {fileID: 1355517560}
   - component: {fileID: 1355517562}
-  - component: {fileID: 1355517563}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2543,23 +2542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 9075051440724615945, guid: 8f484b60d4a42ba47b2a67724b83f164, type: 3}
   pim: {fileID: 1355517560}
---- !u!114 &1355517563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355517559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d08088f986083f4a876b16f670c8dc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner: {fileID: 1355517562}
-  blue: {fileID: 21300000, guid: fc7ffcf9dd1d4d248b2c66e7ecad0e2a, type: 3}
-  green: {fileID: 21300000, guid: 363b9ad16afc3974b9dcd3c94ee6d7d5, type: 3}
-  orange: {fileID: 21300000, guid: b025f45e25549434bbfb107089d9f35c, type: 3}
-  armygreen: {fileID: 21300000, guid: e5d3db281f40ab04db926851fb353f20, type: 3}
+  p1: {fileID: 0}
+  p2: {fileID: 0}
 --- !u!1 &1431411853
 GameObject:
   m_ObjectHideFlags: 0

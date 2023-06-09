@@ -11,6 +11,7 @@ public class PlayerSpawnScript : MonoBehaviour
 	private PlayerInput[] players = new PlayerInput[2];
 	
 	private Vector3[] spawnPos = {new Vector3(-7, -3, 0), new Vector3(7, -3, 0)};
+	[SerializeField] private Sprite p1, p2;
 
 	
     // Start is called before the first frame update
@@ -29,9 +30,18 @@ public class PlayerSpawnScript : MonoBehaviour
 		players[0].SwitchCurrentActionMap("TankWASD");
 		players[1].SwitchCurrentActionMap("TankArrows");;
 		setPlayerList();
+		setPlayerColors();
 	}
 	
 	public void setPlayerList(){
 		GameManager.gameManager.setPlayers(players);
+	}
+	
+	public void setPlayerColors(){
+		p1 = GameManager.gameManager.getPlayerChoice(1);
+		p2 = GameManager.gameManager.getPlayerChoice(2);
+		players[0].gameObject.GetComponent<SpriteRenderer>().sprite = p1;
+		players[1].gameObject.GetComponent<SpriteRenderer>().sprite = p2;
+		Debug.Log("Player Sprites loaded!");
 	}
 }
