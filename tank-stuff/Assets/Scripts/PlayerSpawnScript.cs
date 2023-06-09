@@ -26,7 +26,11 @@ public class PlayerSpawnScript : MonoBehaviour
 		}
 		
 		players[0].SwitchCurrentActionMap("TankWASD");
-		players[1].SwitchCurrentActionMap("TankArrows");
+		players[1].SwitchCurrentActionMap("TankArrows");;
 
+	}
+	
+	public PlayerInput[] getPlayerList(){
+		return players;
 	}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerProperties
 {
+	string playerName;
     int currentHealth;
 	int maxHealth;
 	

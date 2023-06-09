@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	
 	[SerializeField] private PlayerSpawnScript spawner;
 	private PlayerInput[] playerList = new PlayerInput[2];
+	[SerializeField] private Sprite blue, green, orange, armygreen;
 	
 	void Start()
     {
@@ -17,8 +18,18 @@ public class GameManager : MonoBehaviour
     }
 	
 	public void getPlayers(){
-		playerList = spawner.players;
+		playerList = spawner.getPlayerList();
 	}
+	
+	public void setPlayerNames(){
+		
+	}
+	
+	public void setPlayerColors(){
+		
+	}
+	
+	
 	
 	
 	
