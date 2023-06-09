@@ -16,9 +16,10 @@ public class PlayerSpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		InstantiatePlayers();
     }
 	
-	public void InstantiatePlayer(){
+	public void InstantiatePlayers(){
 		
 		for (int i = 0; i < 2; i++){		
 			players[i] = pim.JoinPlayer(i, -1, "KB", Keyboard.current);
@@ -27,10 +28,10 @@ public class PlayerSpawnScript : MonoBehaviour
 		
 		players[0].SwitchCurrentActionMap("TankWASD");
 		players[1].SwitchCurrentActionMap("TankArrows");;
-
+		setPlayerList();
 	}
 	
-	public PlayerInput[] getPlayerList(){
-		return players;
+	public void setPlayerList(){
+		GameManager.gameManager.setPlayers(players);
 	}
 }

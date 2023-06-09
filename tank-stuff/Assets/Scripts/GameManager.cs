@@ -5,20 +5,18 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-	public static GameManager gameManager {get; private set;}
+	public static GameManager gameManager {get; set;}
 	
-	[SerializeField] private PlayerSpawnScript spawner;
 	private PlayerInput[] playerList = new PlayerInput[2];
-	[SerializeField] private Sprite blue, green, orange, armygreen;
+	public Sprite blue, green, orange, armygreen;
 	
-	void Start()
-    {
-        spawner.InstantiatePlayer();
-		
-    }
 	
-	public void getPlayers(){
-		playerList = spawner.getPlayerList();
+	private void Awake(){
+		if (gameManager == null){
+			gameManager = this;
+		} else {
+			Destroy(gameObject);
+		}
 	}
 	
 	public void setPlayerNames(){
@@ -27,6 +25,10 @@ public class GameManager : MonoBehaviour
 	
 	public void setPlayerColors(){
 		
+	}
+	
+	public void setPlayers(PlayerInput[] players){
+			playerList = players;
 	}
 	
 	

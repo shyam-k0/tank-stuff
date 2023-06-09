@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProperties
+public class PlayerProperties : MonoBehaviour
 {
 	string playerName;
     int currentHealth;
