@@ -16,4 +16,5 @@ public class kill : MonoBehaviour
         yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
     }
+	
 }

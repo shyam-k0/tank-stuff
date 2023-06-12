@@ -48,13 +48,9 @@ public class Shooting : MonoBehaviour
 			GameManager.gameManager.damageTank(damage, col.otherRigidbody.gameObject.GetComponent<PlayerInput>());
             StartCoroutine("SwitchColor");
             Destroy(col.gameObject);
-            Debug.Log("Collision");
+            //Debug.Log("Collision");
 
-        } else if (col.otherRigidbody.gameObject.tag == "Projectile"){
-			Destroy(col.otherRigidbody.gameObject);
-			Destroy(col.gameObject);
-			Debug.Log("Destroyed;");
-		}
+        }
     }
 
     IEnumerator SwitchColor()
