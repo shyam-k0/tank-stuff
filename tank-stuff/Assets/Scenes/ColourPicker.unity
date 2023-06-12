@@ -466,12 +466,12 @@ MonoBehaviour:
   playerList:
   - {fileID: 0}
   - {fileID: 0}
-  blue: {fileID: 21300000, guid: fc7ffcf9dd1d4d248b2c66e7ecad0e2a, type: 3}
-  green: {fileID: 21300000, guid: 363b9ad16afc3974b9dcd3c94ee6d7d5, type: 3}
-  orange: {fileID: 21300000, guid: b025f45e25549434bbfb107089d9f35c, type: 3}
-  armygreen: {fileID: 21300000, guid: e5d3db281f40ab04db926851fb353f20, type: 3}
   player1Choice: {fileID: 0}
   player2Choice: {fileID: 0}
+  player1Health: 0
+  player2Health: 0
+  maxHealth: 0
+  WinScreen: {fileID: 4451910435877354922, guid: ca8cf56644a78614ebb43f04ba428bf6, type: 3}
 --- !u!4 &115031491
 Transform:
   m_ObjectHideFlags: 0

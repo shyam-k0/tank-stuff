@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class GameManager : MonoBehaviour
 	private Sprite blue, green, orange, armygreen;
 	public Sprite player1Choice, player2Choice;
 	[SerializeField] private int player1Health, player2Health;
-	
+
 	//private bool playersSet = false;
 
 	[SerializeField] private int maxHealth;
-	
-	private void Awake(){
+
+	public GameObject WinScreen;
+
+    private void Awake(){
 		if (gameManager == null){
 			gameManager = this;
 		} else {
@@ -81,6 +84,19 @@ public class GameManager : MonoBehaviour
 	}
 	
 	public void deathScreen(GameObject player){
-		Debug.Log("Player " + player.GetComponent<PlayerInput>().playerIndex + " Died!");
-	}
+		Debug.Log("Player " + (player.GetComponent<PlayerInput>().playerIndex + 1) + " Died!");
+		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
+		TMP_Text temp = WinScreen.GetComponentInChildren<TMP_Text>();
+		int playerNumber = (player.GetComponent<PlayerInput>().playerIndex + 1);
+		if(playerNumber== 1) 
+		{
+            temp.text = "Player 2 Wins!!";
+        }
+		else
+		{
+            temp.text = "Player 1 Wins!!";
+        }
+
+		
+    }
 }
