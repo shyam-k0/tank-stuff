@@ -32,10 +32,12 @@ public class PlayerProperties : MonoBehaviour
 	
 	public void damagePlayer(int dmg){
 		currentHealth -= dmg;
-		if (currentHealth < 0){
+		if (currentHealth < 0)
 			currentHealth = 0;
+		
+		if (currentHealth == 0)
 			GameManager.gameManager.deathScreen(gameObject);
-		}
+		
 		healthbar.setHealth(currentHealth);
 	}
 	

@@ -40,7 +40,9 @@ public class PlayerColorSelector : MonoBehaviour
 	public void p1bBut(){
 		if (player2Choice != blue){
 			player1Choice = blue;
-		
+			
+			lightenP2IfNull();
+			
 			p1b.color = lightened;
 			p1o.color = darkened;
 			p1g.color = darkened;
@@ -52,6 +54,8 @@ public class PlayerColorSelector : MonoBehaviour
 	public void p1oBut(){
 		if (player2Choice != orange){
 			player1Choice = orange;
+			
+			lightenP2IfNull();
 					
 			p1o.color = lightened;
 			p1b.color = darkened;
@@ -65,6 +69,8 @@ public class PlayerColorSelector : MonoBehaviour
 		if (player2Choice != green){
 			player1Choice = green;
 			
+			lightenP2IfNull();
+			
 			p1g.color = lightened;
 			p1b.color = darkened;
 			p1o.color = darkened;
@@ -76,7 +82,9 @@ public class PlayerColorSelector : MonoBehaviour
 	public void p1aBut(){
 		if (player2Choice != armygreen){
 			player1Choice = armygreen;
-					
+			
+			lightenP2IfNull();
+			
 			p1a.color = lightened;
 			p1b.color = darkened;
 			p1o.color = darkened;
@@ -88,6 +96,9 @@ public class PlayerColorSelector : MonoBehaviour
 	public void p2bBut(){
 		if (player1Choice != blue){
 			player2Choice = blue;		
+			
+			lightenP1IfNull();
+			
 			p2b.color = lightened;
 			p2o.color = darkened;
 			p2g.color = darkened;
@@ -99,6 +110,9 @@ public class PlayerColorSelector : MonoBehaviour
 	public void p2oBut(){
 		if (player1Choice != orange){
 			player2Choice = orange;
+			
+			lightenP1IfNull();
+			
 			p2o.color = lightened;
 			p2b.color = darkened;
 			p2g.color = darkened;
@@ -110,6 +124,9 @@ public class PlayerColorSelector : MonoBehaviour
 	public void p2gBut(){
 		if (player1Choice != green){
 			player2Choice = green;
+			
+			lightenP1IfNull();
+			
 			p2g.color = lightened;
 			p2b.color = darkened;
 			p2o.color = darkened;
@@ -121,6 +138,9 @@ public class PlayerColorSelector : MonoBehaviour
 	public void p2aBut(){
 		if (player1Choice != armygreen){
 			player2Choice = armygreen;
+			
+			lightenP1IfNull();
+			
 			p2a.color = lightened;
 			p2b.color = darkened;
 			p2o.color = darkened;
@@ -129,6 +149,22 @@ public class PlayerColorSelector : MonoBehaviour
 		}
 	}
 	
+	public void lightenP1IfNull(){
+		if (player1Choice == null){
+			p1b.color = lightened;
+			p1o.color = lightened;
+			p1g.color = lightened;
+			p1a.color = lightened;
+		}
+	}
 	
+	public void lightenP2IfNull(){
+		if (player2Choice == null){
+			p2b.color = lightened;
+			p2o.color = lightened;
+			p2g.color = lightened;
+			p2a.color = lightened;
+		}
+	}
 	
 }

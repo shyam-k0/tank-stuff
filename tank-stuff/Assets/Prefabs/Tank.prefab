@@ -116,9 +116,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9075051440724615947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,6 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthbar: {fileID: 0}
 --- !u!114 &4923706337246178124
 MonoBehaviour:
   m_ObjectHideFlags: 0

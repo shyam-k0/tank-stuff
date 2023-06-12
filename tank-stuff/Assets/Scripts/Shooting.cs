@@ -43,14 +43,18 @@ public class Shooting : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 
-        if (col.gameObject.tag == "Projectile")
+        if (col.gameObject.tag == "Projectile" && col.otherRigidbody.gameObject.tag == "Tank")
         {
 			GameManager.gameManager.damageTank(damage, col.otherRigidbody.gameObject.GetComponent<PlayerInput>());
             StartCoroutine("SwitchColor");
             Destroy(col.gameObject);
-            //Debug.Log("Collision");
+            Debug.Log("Collision");
 
-        }
+        } else if (col.otherRigidbody.gameObject.tag == "Projectile"){
+			Destroy(col.otherRigidbody.gameObject);
+			Destroy(col.gameObject);
+			Debug.Log("Destroyed;");
+		}
     }
 
     IEnumerator SwitchColor()
