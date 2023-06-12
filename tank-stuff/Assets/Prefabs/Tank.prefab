@@ -663,6 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ede3f20440d364f86ce98a4883130d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!114 &4923706337246178124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,6 +813,7 @@ MonoBehaviour:
   bulletSpeed: 10
   delay: 0.2
   tankDamageTaken: {fileID: 9075051441542862540}
+  damage: 10
   timeToColor: 0.05
 --- !u!1 &9075051441985437880
 GameObject:

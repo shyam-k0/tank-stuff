@@ -22,8 +22,8 @@ public class HealthBarControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setMaxHealth(100);
-		currentHealth = 100;
+        setMaxHealth(gameObject.GetComponentInParent<PlayerProperties>().getMaxHealth());
+		currentHealth = (int)slider.maxValue;
 		cam = Camera.main;
     }
 
@@ -32,16 +32,12 @@ public class HealthBarControllerScript : MonoBehaviour
     {
         transform.rotation = cam.transform.rotation;
 		transform.position = target.position + offset;
-		
-		if (Input.GetKeyDown(KeyCode.Space)){
-			damageTank(10);
-		}
-    }
+	}
 	
 	public void setHealth(int val){
+		currentHealth = val;
 		slider.value = val;
 		fill.color = grad.Evaluate(slider.normalizedValue);
-		
 	}
 	
 	public void setMaxHealth(int max){
@@ -51,8 +47,4 @@ public class HealthBarControllerScript : MonoBehaviour
 		fill.color = grad.Evaluate(1f);
 	}
 	
-	public void damageTank(int val){
-		currentHealth -= val;
-		setHealth(currentHealth);
-	}
 }

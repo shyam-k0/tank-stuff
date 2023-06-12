@@ -6,7 +6,13 @@ public class PlayerProperties : MonoBehaviour
 {
 	string playerName;
     int currentHealth;
-	int maxHealth;
+	[SerializeField] int maxHealth;
+	[SerializeField] private HealthBarControllerScript healthbar;
+	
+	void Start(){
+		currentHealth = maxHealth;
+		healthbar = gameObject.GetComponentInChildren<HealthBarControllerScript>();
+	}
 	
 	public void setHealth(int health){
 		currentHealth = health;
@@ -26,8 +32,11 @@ public class PlayerProperties : MonoBehaviour
 	
 	public void damagePlayer(int dmg){
 		currentHealth -= dmg;
-		if (currentHealth < 0)
+		if (currentHealth < 0){
 			currentHealth = 0;
+			GameManager.gameManager.deathScreen(gameObject);
+		}
+		healthbar.setHealth(currentHealth);
 	}
 	
 	

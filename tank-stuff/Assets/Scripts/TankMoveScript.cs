@@ -10,7 +10,6 @@ public class TankMoveScript : MonoBehaviour
 	private float horizontalInput;
 	
 	Rigidbody2D rb;
-	private int temp = 0;
 	
 	[SerializeField] private float pushForce = 0;
 	
@@ -35,7 +34,6 @@ public class TankMoveScript : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D c){
 		
 		if (c.gameObject.tag == "Wall"){
-			Debug.Log(temp++);
 			Vector2 dir = (Vector2)transform.position - (Vector2)c.GetContact(0).point;
 			dir.Normalize();
 			

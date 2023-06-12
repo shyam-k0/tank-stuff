@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class Shooting : MonoBehaviour
     public float delay = 0.4f;
 
     public HealthBarControllerScript tankDamageTaken;
+	[SerializeField] private int damage = 10;
 
     //testing
-    bool isHitted = false;
+    //bool isHitted = false;
     public float timeToColor;
     SpriteRenderer sr;
     Color defaultColor;
@@ -43,10 +45,10 @@ public class Shooting : MonoBehaviour
 
         if (col.gameObject.tag == "Projectile")
         {
-            tankDamageTaken.damageTank(10);
+			GameManager.gameManager.damageTank(damage, col.otherRigidbody.gameObject.GetComponent<PlayerInput>());
             StartCoroutine("SwitchColor");
             Destroy(col.gameObject);
-            Debug.Log("Collision");
+            //Debug.Log("Collision");
 
         }
     }

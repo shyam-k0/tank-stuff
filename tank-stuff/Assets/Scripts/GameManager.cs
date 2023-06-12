@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
 	public PlayerInput[] playerList = new PlayerInput[2];
 	private Sprite blue, green, orange, armygreen;
 	public Sprite player1Choice, player2Choice;
+	[SerializeField] private int player1Health, player2Health;
+	
+	//private bool playersSet = false;
 
+	[SerializeField] private int maxHealth;
 	
 	private void Awake(){
 		if (gameManager == null){
@@ -19,6 +23,10 @@ public class GameManager : MonoBehaviour
 		} else {
 			Destroy(gameObject);
 		}
+	}
+	
+	void Update(){
+
 	}
 	
 	public void setColorChoices(Sprite p1, Sprite p2){
@@ -29,6 +37,11 @@ public class GameManager : MonoBehaviour
 	
 	public void setPlayers(PlayerInput[] players){
 			playerList = players;
+			//playersSet = true;
+			
+			player1Health = playerList[0].GetComponent<PlayerProperties>().getHealth();
+			player2Health = playerList[1].GetComponent<PlayerProperties>().getHealth();
+
 			Debug.Log("Players Set!");
 	}
 	
@@ -56,12 +69,18 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(2);
 	}
 	
+	public void damageTank(int dmg, PlayerInput player){
+		//player.gameObject.GetComponentInChildren<HealthBarControllerScript>().damageTank(dmg);
+		int index = player.playerIndex + 1;
+		if (index == 1){
+			player1Health -= dmg;
+		} else if (index == 2){
+			player2Health -= dmg;
+		}
+		player.gameObject.GetComponent<PlayerProperties>().damagePlayer(dmg);
+	}
 	
-	
-	
-	
-	
-	
-	
-
+	public void deathScreen(GameObject player){
+		Debug.Log("Player " + player.GetComponent<PlayerInput>().playerIndex + " Died!");
+	}
 }
