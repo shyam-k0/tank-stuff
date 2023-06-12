@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerColorSelector : MonoBehaviour
 {
-	//[SerializeField] private Sprite blue, green, orange, armygreen;
+	[SerializeField] private Sprite blue, green, orange, armygreen;
 	[SerializeField] private Sprite player1Choice = null, player2Choice = null;
 	[SerializeField] private Image p1b, p1o, p1g, p1a, p2b, p2o, p2g, p2a;
 	[SerializeField] private GameObject confirmButton;
@@ -15,6 +15,7 @@ public class PlayerColorSelector : MonoBehaviour
 	
 
 	void Start(){
+		setColorSprites();
 	}
 	
     void Update()
@@ -26,11 +27,11 @@ public class PlayerColorSelector : MonoBehaviour
 		}
     }
 
-	/*
+	
 	public void setColorSprites(){
 		GameManager.gameManager.setColorOptions(blue, orange, green, armygreen);
 	}
-	*/
+	
 	
 	public void setPlayerChoices(){
 		GameManager.gameManager.setColorChoices(player1Choice, player2Choice);

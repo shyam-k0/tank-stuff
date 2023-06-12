@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager gameManager {get; set;}
 	
 	public PlayerInput[] playerList = new PlayerInput[2];
-	public Sprite blue, green, orange, armygreen;
+	private Sprite blue, green, orange, armygreen;
 	public Sprite player1Choice, player2Choice;
 
 	
