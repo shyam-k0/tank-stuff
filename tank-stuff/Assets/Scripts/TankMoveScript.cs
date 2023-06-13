@@ -12,17 +12,19 @@ public class TankMoveScript : MonoBehaviour
 	Rigidbody2D rb;
 	
 	[SerializeField] private float pushForce = 0;
+	[SerializeField] private int player;
 	
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
+		player = gameObject.GetComponent<PlayerInput>().playerIndex;
+}
 
 
 	// Using FixedUpdate because Physics is used by rigidbody
 	private void FixedUpdate(){
-		rb.velocity = transform.up * speed;
+		rb.velocity = transform.up * speed * GameManager.gameManager.getSpeedMult(player);
 		
 		//horizontalInput = Input.GetAxisRaw("Horizontal");
 		float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
@@ -45,4 +47,5 @@ public class TankMoveScript : MonoBehaviour
 	public void OnMove(InputAction.CallbackContext context){
 		horizontalInput = context.ReadValue<Vector2>().x;
 	}
+
 }
