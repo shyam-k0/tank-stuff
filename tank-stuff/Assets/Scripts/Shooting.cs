@@ -45,7 +45,7 @@ public class Shooting : MonoBehaviour
 
         if (col.gameObject.tag == "Projectile" && col.otherRigidbody.gameObject.tag == "Tank")
         {
-			GameManager.gameManager.damageTank(damage, col.otherRigidbody.gameObject.GetComponent<PlayerInput>());
+            GameManager.gameManager.damageTank((int)(damage * GameManager.gameManager.getDamageMult()), col.otherRigidbody.gameObject.GetComponent<PlayerInput>());
             StartCoroutine("SwitchColor");
             Destroy(col.gameObject);
             //Debug.Log("Collision");

@@ -22,7 +22,7 @@ public class TankMoveScript : MonoBehaviour
 
 	// Using FixedUpdate because Physics is used by rigidbody
 	private void FixedUpdate(){
-		rb.velocity = transform.up * speed;
+		rb.velocity = transform.up * speed * GameManager.gameManager.getSpeedMult();
 		
 		//horizontalInput = Input.GetAxisRaw("Horizontal");
 		float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
@@ -45,4 +45,5 @@ public class TankMoveScript : MonoBehaviour
 	public void OnMove(InputAction.CallbackContext context){
 		horizontalInput = context.ReadValue<Vector2>().x;
 	}
+
 }

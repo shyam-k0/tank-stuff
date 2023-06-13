@@ -18,6 +18,7 @@ public class MainMenuScript : MonoBehaviour
     }
 	
 	public void localModeSelection(){
+        Time.timeScale = 1.0f;
 		SceneManager.LoadScene(1);
 	}
 }
