@@ -13,7 +13,6 @@ public class Shooting : MonoBehaviour
     public float delay = 0.4f;
 
     public HealthBarControllerScript tankDamageTaken;
-	[SerializeField] private int damage = 10;
 
     //testing
     //bool isHitted = false;
@@ -36,6 +35,7 @@ public class Shooting : MonoBehaviour
 
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
             rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
             yield return new WaitForSeconds(delay);
         }
@@ -45,7 +45,6 @@ public class Shooting : MonoBehaviour
 
         if (col.gameObject.tag == "Projectile" && col.otherRigidbody.gameObject.tag == "Tank")
         {
-            GameManager.gameManager.damageTank((int)(damage * GameManager.gameManager.getDamageMult()), col.otherRigidbody.gameObject.GetComponent<PlayerInput>());
             StartCoroutine("SwitchColor");
             Destroy(col.gameObject);
             //Debug.Log("Collision");

@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private int maxHealth;
 
 	public GameObject WinScreen;
-	[SerializeField] private float speedMult = 1;
-	[SerializeField] private float dmgMult = 1;
+	[SerializeField] private float[] speedMult = new float[2]{ 1, 1 };
+	[SerializeField] private float[] dmgMult = new float[2]{ 1, 1 };
 
 	public bool displayDeathScreen = false;
 
@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 
 	void Update()
 	{
-
 	}
 
 	public void setColorChoices(Sprite p1, Sprite p2)
@@ -129,22 +128,24 @@ public class GameManager : MonoBehaviour
 		return displayDeathScreen;
 	}
 
-	public float getSpeedMult()
+	public float getSpeedMult(int index)
 	{
-		return speedMult;
+		Debug.Log("Speed value: " + speedMult[index]);
+		return speedMult[index];
 	}
 
-	public float getDamageMult()
+	public float getDamageMult(int index)
 	{
-		return dmgMult;
+		Debug.Log("dmgindex: " + index);
+		return dmgMult[index];
 	}
 
-	public void setSpeedMult(float mult)
+	public void setSpeedMult(float mult, int index)
 	{
-		speedMult = mult;
+		speedMult[index] = mult;
 	}
-	public void setDamageMult(float mult)
+	public void setDamageMult(float mult, int index)
 	{
-		dmgMult = mult;
+		dmgMult[index] = mult;
 	}
 }

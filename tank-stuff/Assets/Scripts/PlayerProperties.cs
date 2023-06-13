@@ -34,11 +34,9 @@ public class PlayerProperties : MonoBehaviour
 		currentHealth -= dmg;
 		if (currentHealth < 0)
 			currentHealth = 0;
-		
-		if (currentHealth == 0)
+        healthbar.setHealth(currentHealth);
+        if (currentHealth == 0)
 			GameManager.gameManager.deathScreen(gameObject);
-		
-		healthbar.setHealth(currentHealth);
 	}
 	
 	

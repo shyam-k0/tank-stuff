@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DisplayWinScreen : MonoBehaviour
 {
-    [SerializeField] private GameObject DeathCanvas;
+    [SerializeField] private GameObject Panel;
+    [SerializeField] private GameObject Button;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +16,10 @@ public class DisplayWinScreen : MonoBehaviour
     void Update()
     {
         bool check = GameManager.gameManager.getDisplayDeathScreen();
-        Debug.Log(check);
         if (check)
         {
-            DeathCanvas.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("Fail");
+            Panel.SetActive(true);
+            Button.SetActive(true);
         }
     }
 }
