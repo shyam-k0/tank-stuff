@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PowerupScript : MonoBehaviour
+public class DamagePowerup : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -13,5 +13,9 @@ public class PowerupScript : MonoBehaviour
             GameManager.gameManager.setDamageMult(10.0f, index);
             Destroy(gameObject);
         }
+    }
+    public void Awake()
+    {
+        Destroy(gameObject, 5);
     }
 }
