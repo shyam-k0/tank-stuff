@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 9075051441591106255}
   - component: {fileID: 9075051441591106254}
   - component: {fileID: 9075051441591106249}
-  - component: {fileID: 386745880090674644}
+  - component: {fileID: 1157415639213087764}
   m_Layer: 6
   m_Name: PlayerTank
   m_TagString: Tank
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 386745880090674644}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: m_TankMoveScript, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -834,7 +834,7 @@ MonoBehaviour:
   delay: 0.2
   tankDamageTaken: {fileID: 9075051441542862540}
   timeToColor: 0.05
---- !u!114 &386745880090674644
+--- !u!114 &1157415639213087764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -843,12 +843,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9075051441591106243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e341b64ba1d0541bedddaf296ddcc3, type: 3}
+  m_Script: {fileID: 11500000, guid: c258d20faac73c841b21f6cae57c5886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
   rotationSpeed: 200
-  pushForce: 0
   player: 0
 --- !u!1 &9075051441985437880
 GameObject:

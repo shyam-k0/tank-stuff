@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Netcode;
 
-public class m_TankMoveScript : NetworkBehaviour
+public class mTankMoveScript : NetworkBehaviour
 {
 	[SerializeField] private float speed;
 	[SerializeField] private float rotationSpeed;
@@ -12,7 +12,7 @@ public class m_TankMoveScript : NetworkBehaviour
 	
 	Rigidbody2D rb;
 	
-	[SerializeField] private float pushForce = 0;
+	//[SerializeField] private float pushForce = 0;
 	[SerializeField] private int player;
 	
 	
