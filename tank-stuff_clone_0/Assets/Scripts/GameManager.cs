@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
 		player.gameObject.GetComponent<PlayerProperties>().damagePlayer(dmg);
 	}
 
+	
 	public void deathScreen(GameObject player)
 	{
 		Debug.Log("Player " + (player.GetComponent<PlayerInput>().playerIndex + 1) + " Died!");
@@ -130,13 +131,13 @@ public class GameManager : MonoBehaviour
 
 	public float getSpeedMult(int index)
 	{
-		Debug.Log("Speed value: " + speedMult[index]);
+		//Debug.Log("Speed value: " + speedMult[index]);
 		return speedMult[index];
 	}
 
 	public float getDamageMult(int index)
 	{
-		Debug.Log("dmgindex: " + index);
+		//Debug.Log("dmgindex: " + index);
 		return dmgMult[index];
 	}
 
@@ -148,4 +149,9 @@ public class GameManager : MonoBehaviour
 	{
 		dmgMult[index] = mult;
 	}
+
+	public void healthPowerup(int index)
+	{
+        playerList[index].gameObject.GetComponent<PlayerProperties>().giveMeHealth();
+    }
 }
