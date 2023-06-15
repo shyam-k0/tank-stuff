@@ -710,8 +710,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: m_TankMoveScript, Assembly-CSharp
+      - m_Target: {fileID: 1157415639213087764}
+        m_TargetAssemblyTypeName: mTankMoveScript, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
