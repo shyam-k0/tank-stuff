@@ -8,7 +8,8 @@ public class mTankMoveScript : NetworkBehaviour
 {
 	[SerializeField] private float speed;
 	[SerializeField] private float rotationSpeed;
-	private float horizontalInput;
+	[SerializeField] private float horizontalInput;
+	[SerializeField] private PlayerInput pi;
 	
 	Rigidbody2D rb;
 	
@@ -25,6 +26,15 @@ public class mTankMoveScript : NetworkBehaviour
         rb = GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<PlayerInput>().playerIndex;
 	}
+	
+	public override void OnNetworkSpawn()
+   {
+        base.OnNetworkSpawn();
+        // Make sure this belongs to us
+        if (!IsOwner) { return; }
+        // check if we have the wrong inputActionAsset
+        pi.enabled = true;
+   }
 
 
 	// Using FixedUpdate because Physics is used by rigidbody
