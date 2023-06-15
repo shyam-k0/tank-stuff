@@ -29,6 +29,8 @@ public class mTankMoveScript : NetworkBehaviour
 
 	// Using FixedUpdate because Physics is used by rigidbody
 	private void FixedUpdate(){
+		if (!IsOwner) return;
+		
 		//rb.velocity = transform.up * speed * GameManager.gameManager.getSpeedMult(player);
 		rb.velocity = transform.up * speed;
 		//horizontalInput = Input.GetAxisRaw("Horizontal");
