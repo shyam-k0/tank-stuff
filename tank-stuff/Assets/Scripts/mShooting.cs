@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
-public class mShooting : MonoBehaviour
+public class mShooting : NetworkBehaviour
 {
 
     public Transform firePoint;
@@ -37,6 +38,7 @@ public class mShooting : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             //bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
             rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+            bullet.GetComponent<NetworkObject>().Spawn();
             yield return new WaitForSeconds(delay);
         }
     }
