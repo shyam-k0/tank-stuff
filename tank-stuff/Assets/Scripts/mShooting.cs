@@ -20,13 +20,15 @@ public class mShooting : NetworkBehaviour
     public float timeToColor;
     SpriteRenderer sr;
     Color defaultColor;
+    public bool thisIsClient = false;
 
     // Update is called once per frame
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         defaultColor = sr.color;
-        StartCoroutine(Shoot(delay));   
+
+        ShootServerRpc();   
     }
 
     IEnumerator Shoot(float delay)
@@ -38,7 +40,6 @@ public class mShooting : NetworkBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             //bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
             rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-            bullet.GetComponent<NetworkObject>().Spawn();
             yield return new WaitForSeconds(delay);
         }
     }
@@ -59,5 +60,10 @@ public class mShooting : NetworkBehaviour
         sr.color = new Color(1f, 0.30196078f, 0.30196078f);
         yield return new WaitForSeconds(timeToColor);
         sr.color = defaultColor;
+    }
+
+    [ServerRpc]
+    public void ShootServerRpc() {
+        StartCoroutine(Shoot(delay));
     }
 }
