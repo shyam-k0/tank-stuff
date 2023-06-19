@@ -409,8 +409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6875942460788450936}
   bulletPrefab: {fileID: 5222620907303139803, guid: d0ac0fee61367d54589f6e068ffc0923, type: 3}
-  bulletSpeed: 10
-  delay: 0.2
+  bulletSpeed: 14
+  delay: 0.1
   tankDamageTaken: {fileID: 6875942459570556775}
   timeToColor: 0.05
 --- !u!1 &6875942459570556780

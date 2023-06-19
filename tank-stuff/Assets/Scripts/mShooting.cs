@@ -20,7 +20,6 @@ public class mShooting : NetworkBehaviour
     public float timeToColor;
     SpriteRenderer sr;
     Color defaultColor;
-    public bool thisIsClient = false;
 
     // Update is called once per frame
     void Start()
@@ -28,18 +27,33 @@ public class mShooting : NetworkBehaviour
         sr = GetComponent<SpriteRenderer>();
         defaultColor = sr.color;
 
-        ShootServerRpc();   
+        mShoot();
+
     }
 
-    IEnumerator Shoot(float delay)
+    
+    void Update()
+    {
+        if (Input.GetKeyDown("space") && IsOwner) { 
+        shootBullet();
+        shootBulletServerRpc();
+        }
+    }
+
+    IEnumerator Shoot()
     {
         while (true)
         {
-
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            //bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
-            rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+            if (IsOwner)
+            {
+                shootBullet();
+                if (!IsServer && IsClient) {
+                    shootBulletServerRpc();
+                } else if (IsServer) {
+                    shootBulletClientRpc();
+                }
+                
+            }
             yield return new WaitForSeconds(delay);
         }
     }
@@ -48,9 +62,13 @@ public class mShooting : NetworkBehaviour
 
         if (col.gameObject.tag == "Projectile" && col.otherRigidbody.gameObject.tag == "Tank")
         {
-            StartCoroutine("SwitchColor");
+            StartCoroutine(SwitchColor());
             Destroy(col.gameObject);
             //Debug.Log("Collision");
+            
+            if (IsServer) { 
+                
+            }
 
         }
     }
@@ -62,8 +80,39 @@ public class mShooting : NetworkBehaviour
         sr.color = defaultColor;
     }
 
+
+    public void mShoot() {
+        StartCoroutine(Shoot());
+    }
+
+    public void shootBullet() {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        //bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
+        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+    }
+
     [ServerRpc]
-    public void ShootServerRpc() {
-        StartCoroutine(Shoot(delay));
+    public void shootBulletServerRpc()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        //bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
+        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+    }
+
+    [ClientRpc]
+    public void shootBulletClientRpc()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        //bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
+        rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+    }
+
+
+    [ClientRpc]
+    public void bulletHitClientRpc() {
+        StartCoroutine(SwitchColor());
     }
 }
