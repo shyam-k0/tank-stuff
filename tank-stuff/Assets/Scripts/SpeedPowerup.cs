@@ -10,7 +10,7 @@ public class SpeedPowerup : MonoBehaviour
         if (col.gameObject.tag == "Tank")
         {
             int index = col.gameObject.GetComponent<PlayerInput>().playerIndex;
-            GameManager.gameManager.setSpeedMult(10.0f, index);
+            GameManager.gameManager.setSpeedMult(2f, index);
             Destroy(gameObject);
         }
     }

@@ -9,7 +9,7 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
 
-    public float bulletSpeed = 5f;
+    public float bulletSpeed = 3f;
     public float delay = 0.4f;
 
     public HealthBarControllerScript tankDamageTaken;
@@ -37,6 +37,7 @@ public class Shooting : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
             rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+            rb.velocity += gameObject.GetComponent<Rigidbody2D>().velocity;
             yield return new WaitForSeconds(delay);
         }
     }
@@ -58,4 +59,6 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(timeToColor);
         sr.color = defaultColor;
     }
+
+
 }
