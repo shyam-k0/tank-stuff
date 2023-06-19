@@ -65,11 +65,6 @@ public class mShooting : NetworkBehaviour
             StartCoroutine(SwitchColor());
             Destroy(col.gameObject);
             //Debug.Log("Collision");
-            
-            if (IsServer) { 
-                
-            }
-
         }
     }
 
