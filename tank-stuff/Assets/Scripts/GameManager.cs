@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private float[] speedMult = new float[2]{ 1, 1 };
 	[SerializeField] private float[] dmgMult = new float[2]{ 1, 1 };
 
-	public bool displayDeathScreen = false;
+	[SerializeField] private string player1Name;
+    [SerializeField] private string player2Name;
+    public bool displayDeathScreen = false;
 
 	private void Awake()
 	{
@@ -154,4 +156,20 @@ public class GameManager : MonoBehaviour
 	{
         playerList[index].gameObject.GetComponent<PlayerProperties>().giveMeHealth();
     }
+
+	public void setPlayerName(string name1, string name2)
+	{
+		player1Name = name1;
+		player2Name = name2;
+		Debug.Log("Player 1 Name: " + player1Name + "  Player 2 Name: " + player2Name);
+	}
+
+	public string getName(int index)
+	{
+		if(index == 1)
+			return player1Name;
+		else 
+			return player2Name;
+	}
+
 }

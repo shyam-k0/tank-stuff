@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerColorSelector : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class PlayerColorSelector : MonoBehaviour
 	
 	private Color darkened = new Color(0.5f, 0.5f, 0.5f, 1f);
 	private Color lightened = new Color(1f, 1f, 1f, 1f);
-	
 
-	void Start(){
+	[SerializeField] private TMP_InputField player1Name;
+    [SerializeField] private TMP_InputField player2Name;
+
+
+    void Start(){
 		setColorSprites();
 	}
 	
@@ -165,6 +169,11 @@ public class PlayerColorSelector : MonoBehaviour
 			p2g.color = lightened;
 			p2a.color = lightened;
 		}
+	}
+
+	public void setPlayerNames()
+	{
+		GameManager.gameManager.setPlayerName(player1Name.text, player2Name.text);
 	}
 	
 }
