@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 
 public class PlayerSpawnScript : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerSpawnScript : MonoBehaviour
 	private Vector3[] spawnPos = {new Vector3(-7, -3, 0), new Vector3(7, -3, 0)};
 	[SerializeField] private Sprite p1, p2;
 
+	private string[] PlayerName;
 	
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class PlayerSpawnScript : MonoBehaviour
 		players[1].SwitchCurrentActionMap("TankArrows");;
 		setPlayerList();
 		setPlayerColors();
+		setNames();
 	}
 	
 	public void setPlayerList(){
@@ -44,4 +47,12 @@ public class PlayerSpawnScript : MonoBehaviour
 		players[1].gameObject.GetComponent<SpriteRenderer>().sprite = p2;
 		Debug.Log("Player Sprites loaded!");
 	}
+
+	public void setNames()
+	{
+        players[0].gameObject.GetComponentInChildren<TMP_Text>().text = GameManager.gameManager.getName(1);
+        players[1].gameObject.GetComponentInChildren<TMP_Text>().text = GameManager.gameManager.getName(2);
+
+    }
+	
 }
