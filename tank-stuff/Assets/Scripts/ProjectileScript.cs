@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.Netcode;
 
-public class mProjectileScript : NetworkBehaviour
+public class ProjectileScript : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
 

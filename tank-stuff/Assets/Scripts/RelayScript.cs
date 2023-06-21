@@ -10,11 +10,13 @@ using TMPro;
 using Unity.Networking.Transport.Relay;
 using Unity.Netcode.Transports.UTP;
 
-public class RelayScript : MonoBehaviour
+public class RelayScript : NetworkBehaviour
 {
 	[SerializeField] private GameObject input;
 	[SerializeField] private GameObject createBut;
 	[SerializeField] private GameObject joinBut;
+	[SerializeField] private GameObject joinCodeText;
+	[SerializeField] private bool clientJoined = false;
 	
 	private async void Start(){
 		await UnityServices.InitializeAsync();
@@ -23,6 +25,12 @@ public class RelayScript : MonoBehaviour
 			Debug.Log("Signed In " + AuthenticationService.Instance.PlayerId);
 		};
 		await AuthenticationService.Instance.SignInAnonymouslyAsync();
+	}
+	
+	private void Update(){
+		if (clientJoined)
+			joinCodeText.GetComponent<TMP_Text>().text = "";
+			
 	}
 	
 	public async void createRelay(){
@@ -35,6 +43,7 @@ public class RelayScript : MonoBehaviour
 			
 			string joinCode = await RelayService.Instance.GetJoinCodeAsync(alloc.AllocationId);
 			Debug.Log("Relay join code: " + joinCode);
+			joinCodeText.GetComponent<TMP_Text>().text = joinCode;
 			
 			RelayServerData relayServerData = new RelayServerData(alloc, "dtls");
 			NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
@@ -60,8 +69,22 @@ public class RelayScript : MonoBehaviour
 			NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 			NetworkManager.Singleton.StartClient();
 			
+			StartCoroutine(waitForTime());
+
+			
 		} catch (RelayServiceException e){
 			Debug.Log(e);
 		}
 	}
+	
+	[ServerRpc(RequireOwnership = false)]
+	public void clientJoinedServerRpc(){
+		clientJoined = true;
+	}
+	
+	IEnumerator waitForTime()
+    {
+        yield return new WaitForSeconds(5);
+		clientJoinedServerRpc();
+    }
 }

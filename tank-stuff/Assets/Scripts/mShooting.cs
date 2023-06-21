@@ -14,6 +14,8 @@ public class mShooting : NetworkBehaviour
     public float delay = 0.4f;
 
     public HealthBarControllerScript tankDamageTaken;
+	
+	private bool spaceDown = false;
 
     //testing
     //bool isHitted = false;
@@ -28,23 +30,27 @@ public class mShooting : NetworkBehaviour
         defaultColor = sr.color;
 
         mShoot();
-
-    }
-
+	}
     
     void Update()
     {
         if (Input.GetKeyDown("space") && IsOwner) { 
-        shootBullet();
-        shootBulletServerRpc();
+			//shootBullet();
+			//shootBulletServerRpc();
+			spaceDown = true;
+			Debug.Log("keydown" + spaceDown);
         }
+		if (Input.GetKeyUp("space") && IsOwner){
+			spaceDown = false;
+			Debug.Log("keyup" + spaceDown);
+		}
     }
 
     IEnumerator Shoot()
     {
         while (true)
         {
-            if (IsOwner)
+            if (IsOwner && spaceDown)
             {
                 shootBullet();
                 if (!IsServer && IsClient) {
@@ -99,7 +105,7 @@ public class mShooting : NetworkBehaviour
     [ClientRpc]
     public void shootBulletClientRpc()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+		GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         //bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
         rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
@@ -110,4 +116,5 @@ public class mShooting : NetworkBehaviour
     public void bulletHitClientRpc() {
         StartCoroutine(SwitchColor());
     }
+	
 }
