@@ -36,8 +36,8 @@ public class mPlayerProperties : NetworkBehaviour
 		if (currentHealth < 0)
 			currentHealth = 0;
         healthbar.setHealth(currentHealth);
-        if (currentHealth == 0)
-			mGameManager.gameManager.deathScreen(gameObject);
+        //if (currentHealth == 0)
+		//	mGameManager.gameManager.deathScreen(gameObject);
 	}
 	
 	public void giveMeHealth()

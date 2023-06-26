@@ -13,7 +13,11 @@ public class mGameManager : NetworkBehaviour
 	public PlayerInput[] playerList = new PlayerInput[2];
 	private Sprite blue, green, orange, armygreen;
 	public Sprite player1Choice, player2Choice;
-	[SerializeField] private int player1Health, player2Health;
+	//[SerializeField] private int player1Health, player2Health;
+	
+	[SerializeField] private NetworkVariable<int> player1Health = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+	[SerializeField] private NetworkVariable<int> player2Health = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
 
 	//private bool playersSet = false;
 
@@ -55,8 +59,8 @@ public class mGameManager : NetworkBehaviour
 		playerList = players;
 		//playersSet = true;
 
-		player1Health = playerList[0].GetComponent<PlayerProperties>().getHealth();
-		player2Health = playerList[1].GetComponent<PlayerProperties>().getHealth();
+		player1Health.Value = playerList[0].GetComponent<PlayerProperties>().getHealth();
+		player2Health.Value = playerList[1].GetComponent<PlayerProperties>().getHealth();
 
 		Debug.Log("Players Set!");
 	}
@@ -99,11 +103,11 @@ public class mGameManager : NetworkBehaviour
 		int index = player.playerIndex + 1;
 		if (index == 1)
 		{
-			player1Health -= dmg;
+			player1Health.Value -= dmg;
 		}
 		else if (index == 2)
 		{
-			player2Health -= dmg;
+			player2Health.Value -= dmg;
 		}
 		player.gameObject.GetComponent<PlayerProperties>().damagePlayer(dmg);
 	}

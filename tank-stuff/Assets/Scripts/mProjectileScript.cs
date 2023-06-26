@@ -13,7 +13,7 @@ public class mProjectileScript : NetworkBehaviour
 
         if (col.gameObject.tag == "Tank" && col.otherRigidbody.gameObject.tag == "Projectile")
         {
-            //GameManager.gameManager.damageTank((int)damage, col.gameObject.GetComponent<PlayerInput>());
+            mGameManager.gameManager.damageTank((int)damage, col.gameObject.GetComponent<PlayerInput>());
             Destroy(col.otherRigidbody.gameObject);
             //Debug.Log("Collision");
         }
