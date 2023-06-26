@@ -25,10 +25,10 @@ public class Shooting : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         defaultColor = sr.color;
-        StartCoroutine(Shoot(delay));   
+        StartCoroutine(Shoot());   
     }
 
-    IEnumerator Shoot(float delay)
+    IEnumerator Shoot()
     {
         while (true)
         {
