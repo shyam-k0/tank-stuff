@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private string player1Name;
     [SerializeField] private string player2Name;
     public bool displayDeathScreen = false;
+	[SerializeField] private bool[] hasPowerup = {false, false};
 
 	private void Awake()
 	{
@@ -146,10 +147,13 @@ public class GameManager : MonoBehaviour
 	public void setSpeedMult(float mult, int index)
 	{
 		speedMult[index] = mult;
+		hasPowerup[index] = true;
 	}
+	
 	public void setDamageMult(float mult, int index)
 	{
 		dmgMult[index] = mult;
+		hasPowerup[index] = true;
 	}
 
 	public void healthPowerup(int index)
@@ -170,6 +174,10 @@ public class GameManager : MonoBehaviour
 			return player1Name;
 		else 
 			return player2Name;
+	}
+	
+	public bool getHasPowerup(int index){
+		return hasPowerup[index];
 	}
 
 }
