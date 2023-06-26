@@ -19,6 +19,8 @@ public class Shooting : MonoBehaviour
     public float timeToColor;
     SpriteRenderer sr;
     Color defaultColor;
+	
+	[SerializeField] private IEnumerator shooter;
 
     // Update is called once per frame
     void Start()
@@ -27,18 +29,36 @@ public class Shooting : MonoBehaviour
         defaultColor = sr.color;
         StartCoroutine(Shoot());   
     }
+	
+	// Uncomment this Update and Comment out the StartCoroutine above for shooting on command
+	/*
+	void Update(){
+		
+		if (Input.GetKeyDown("space")) { 
+			if (shooter != null)
+				StopCoroutine(shooter);
+			shooter = Shoot();
+			StartCoroutine(shooter);
+        }
+		if (Input.GetKeyUp("space")){
+			StopCoroutine(shooter);
+		}
+	}
+
+	*/
 
     IEnumerator Shoot()
     {
         while (true)
         {
-
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
-            rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-            rb.velocity += gameObject.GetComponent<Rigidbody2D>().velocity;
-            yield return new WaitForSeconds(delay);
+			
+			GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+			Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+			bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
+			rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+			rb.velocity += gameObject.GetComponent<Rigidbody2D>().velocity;
+			yield return new WaitForSeconds(delay);
+			
         }
     }
     void OnCollisionEnter2D(Collision2D col)
