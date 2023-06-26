@@ -33,4 +33,8 @@ public class MainMenuScript : MonoBehaviour
         Time.timeScale = 1.0f;
 		SceneManager.LoadScene(3);
 	}
+	
+	public void exitSelection(){
+		Application.Quit();
+	}
 }
