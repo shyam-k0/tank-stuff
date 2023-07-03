@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string player2Name;
     public bool displayDeathScreen = false;
 	[SerializeField] private bool[] hasPowerup = {false, false};
+	
+	[SerializeField] private float damagePowerupTime = 6.0f;
+	[SerializeField] private float speedPowerupTime = 6.0f;
 
 	private void Awake()
 	{
@@ -156,9 +159,9 @@ public class GameManager : MonoBehaviour
 		hasPowerup[index] = true;
 	}
 
-	public void healthPowerup(int index)
+	public void healthPowerup(int index, int val)
 	{
-        playerList[index].gameObject.GetComponent<PlayerProperties>().giveMeHealth();
+        playerList[index].gameObject.GetComponent<PlayerProperties>().addHealth(val);
     }
 
 	public void setPlayerName(string name1, string name2)
@@ -179,5 +182,39 @@ public class GameManager : MonoBehaviour
 	public bool getHasPowerup(int index){
 		return hasPowerup[index];
 	}
+	
+	public void setHasPowerup(int index, bool val){
+		hasPowerup[index] = val;
+	}
 
+	IEnumerator startSpeedTimer(int index){
+		yield return new WaitForSeconds(speedPowerupTime);
+		endSpeedPowerup(index);
+	}
+	
+	IEnumerator startDamageTimer(int index){
+		yield return new WaitForSeconds(damagePowerupTime);
+		endDamagePowerup(index);
+	}
+	
+	public void endDamagePowerup(int index){
+		hasPowerup[index] = false;
+		dmgMult[index] = 1f;
+		Debug.Log(index + "  endDmg");
+	}
+	
+	public void endSpeedPowerup(int index){
+		hasPowerup[index] = false;
+		speedMult[index] = 1f;
+		Debug.Log(index + "  endSpeed");
+	}
+	
+	public float getSpeedPowerupTime(){
+		return speedPowerupTime;
+	}
+	
+	public float getDamagePowerupTime(){
+		return damagePowerupTime;
+	}
+	
 }

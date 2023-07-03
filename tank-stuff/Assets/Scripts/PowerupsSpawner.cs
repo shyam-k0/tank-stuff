@@ -6,7 +6,7 @@ public class PowerupsSpawner : MonoBehaviour
 {
 
     public GameObject[] powerups;
-    private float Timer = 5f;
+    [SerializeField] private float Timer = 5f;
     
     // Start is called before the first frame update
     void Start()

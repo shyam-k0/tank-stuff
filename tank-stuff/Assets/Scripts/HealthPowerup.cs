@@ -5,13 +5,19 @@ using UnityEngine.InputSystem;
 
 public class HealthPowerup : MonoBehaviour
 {
+	[SerializeField] private int healthAmount = 30;
+	
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Tank")
         {
-            int index = col.gameObject.GetComponent<PlayerInput>().playerIndex;
-            GameManager.gameManager.healthPowerup(index);
-            Destroy(gameObject);
+			PlayerInput tank = col.gameObject.GetComponent<PlayerInput>();
+			PlayerProperties player = tank.gameObject.GetComponent<PlayerProperties>();
+            int index = tank.playerIndex;
+			if (player.getHealth() < player.getMaxHealth()){
+				GameManager.gameManager.healthPowerup(index, healthAmount);
+				Destroy(gameObject);
+			}
         }
     }
 

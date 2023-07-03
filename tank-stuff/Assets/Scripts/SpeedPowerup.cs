@@ -10,8 +10,11 @@ public class SpeedPowerup : MonoBehaviour
         if (col.gameObject.tag == "Tank")
         {
             int index = col.gameObject.GetComponent<PlayerInput>().playerIndex;
-            GameManager.gameManager.setSpeedMult(2f, index);
-            Destroy(gameObject);
+			if (!GameManager.gameManager.getHasPowerup(index)){
+				GameManager.gameManager.setSpeedMult(2f, index);
+				col.gameObject.GetComponent<PowerupTimer>().setSpeedGainedTrue();
+				Destroy(gameObject);
+			}
         }
     }
     public void Awake()

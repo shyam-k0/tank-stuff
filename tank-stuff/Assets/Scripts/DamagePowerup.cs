@@ -10,8 +10,11 @@ public class DamagePowerup : MonoBehaviour
         if (col.gameObject.tag == "Tank")
         {
             int index = col.gameObject.GetComponent<PlayerInput>().playerIndex;
-            GameManager.gameManager.setDamageMult(10.0f, index);
-            Destroy(gameObject);
+			if (!GameManager.gameManager.getHasPowerup(index)){
+				GameManager.gameManager.setDamageMult(2.0f, index);
+				col.gameObject.GetComponent<PowerupTimer>().setDamageGainedTrue();
+				Destroy(gameObject);
+			}
         }
     }
     public void Awake()

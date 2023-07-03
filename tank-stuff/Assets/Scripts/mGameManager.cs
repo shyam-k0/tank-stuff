@@ -157,9 +157,9 @@ public class mGameManager : NetworkBehaviour
 		dmgMult[index] = mult;
 	}
 
-	public void healthPowerup(int index)
+	public void healthPowerup(int index, int val)
 	{
-        playerList[index].gameObject.GetComponent<PlayerProperties>().giveMeHealth();
+        playerList[index].gameObject.GetComponent<PlayerProperties>().addHealth(val);
     }
 
 	public void setPlayerName(string name1, string name2)

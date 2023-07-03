@@ -21,16 +21,19 @@ public class Shooting : MonoBehaviour
     Color defaultColor;
 	
 	[SerializeField] private IEnumerator shooter;
+	private PlayerInput currentTank;
 
     // Update is called once per frame
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         defaultColor = sr.color;
+		currentTank = gameObject.GetComponent<PlayerInput>();
         StartCoroutine(Shoot());   
     }
 	
 	// Uncomment this Update and Comment out the StartCoroutine above for shooting on command
+	// Needs to be modified for separate player controls
 	/*
 	void Update(){
 		
@@ -54,7 +57,9 @@ public class Shooting : MonoBehaviour
 			
 			GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 			Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-			bullet.GetComponent<ProjectileScript>().setDamageMultiplier(GameManager.gameManager.getDamageMult(gameObject.GetComponent<PlayerInput>().playerIndex));
+			ProjectileScript projScript = bullet.GetComponent<ProjectileScript>();
+			projScript.setDamageMultiplier(GameManager.gameManager.getDamageMult(currentTank.playerIndex));
+			projScript.setTankIndex(currentTank.playerIndex);
 			rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
 			rb.velocity += gameObject.GetComponent<Rigidbody2D>().velocity;
 			yield return new WaitForSeconds(delay);

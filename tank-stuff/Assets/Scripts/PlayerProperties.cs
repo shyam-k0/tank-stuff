@@ -39,9 +39,11 @@ public class PlayerProperties : MonoBehaviour
 			GameManager.gameManager.deathScreen(gameObject);
 	}
 	
-	public void giveMeHealth()
+	public void addHealth(int val)
 	{
-		currentHealth = maxHealth;
+		currentHealth += val;
+		if (currentHealth > maxHealth)
+			currentHealth = maxHealth;
         healthbar.setHealth(currentHealth);
     }
 	
