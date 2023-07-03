@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.lootlocker.lootlockersdk": {
+      "version": "file:C:/Users/jasmi/OneDrive/Desktop/LootLocker/unity-sdk-main",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "7.0.9",
       "depth": 1,
