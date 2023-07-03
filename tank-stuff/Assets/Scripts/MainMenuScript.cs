@@ -23,13 +23,22 @@ public class MainMenuScript : MonoBehaviour
 	
 	public void localModeSelection(){
         Time.timeScale = 1.0f;
-		LeanTween.value(gameObject, (value) => {overlay.color = value;}, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), time).setEase(LeanTweenType.easeInQuad).setOnComplete(() => {
+		    LeanTween.value(gameObject, (value) => {overlay.color = value;}, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), time).setEase(LeanTweenType.easeInQuad).setOnComplete(() => {
 			SceneManager.LoadScene(1);
 			});
 		
 	}
-	
-	public void multiModeSelection(){
+
+    public void playAgain()
+    {
+        Time.timeScale = 1.0f;
+            SceneManager.LoadScene(1);
+
+    }
+
+
+
+    public void multiModeSelection(){
         Time.timeScale = 1.0f;
 		SceneManager.LoadScene(3);
 	}
