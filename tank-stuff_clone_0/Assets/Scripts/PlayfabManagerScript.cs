@@ -11,7 +11,7 @@ public class PlayfabManagerScript : MonoBehaviour
 
 	public void Start()
     {
-        var request = new LoginWithCustomIDRequest { CustomId = "tankCustomID", CreateAccount = true};
+        var request = new LoginWithCustomIDRequest { CustomId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
     }
 
