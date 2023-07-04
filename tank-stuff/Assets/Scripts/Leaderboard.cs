@@ -13,8 +13,10 @@ public class Leaderboard : MonoBehaviour
 	[SerializeField] private int player2Score = 300;
 	
 
-    [SerializeField] string leaderboardKey = "tank_leaderboard";
+    [SerializeField] string leaderboardKey = "tank_leaderboard_DevEnv_1";
 	[SerializeField] int leaderboardID = 15793;
+	
+	[SerializeField] private int count = 5;
 
     private void Start()
     {
@@ -71,5 +73,28 @@ public class Leaderboard : MonoBehaviour
         Debug.Log("Player 1: " + player2Name + " " + player2Score);
         SubmitScore();
     }
+	
+	public void getLeaderboard(){
+		LootLockerSDKManager.GetScoreList(leaderboardID, count, 0, (response) =>
+		{
+			if (response.statusCode == 200) {
+				Debug.Log("Successful");
+				LootLockerLeaderboardMember[] members = response.items;
+				Debug.Log("-----------------LEADERBOARD-------------------");
+				Debug.Log("--Rank---------------Name-------------Score----");
+				for (int i = 0; i < members.Length; i++){
+					Debug.Log(members[i].rank + "	" + members[i].member_id + "	" + members[i].score);
+					//Debug.Log(members[i].rank);
+					//Debug.Log(members[i].score);
+					//Debug.Log(members[i].player.name);
+					//Debug.Log(members[i].member_id);
+				}
+				Debug.Log("-----------------------------------------------");
+			} else {
+				Debug.Log("failed: " + response.Error);
+			}
+		});
+		
+	}
     
 }

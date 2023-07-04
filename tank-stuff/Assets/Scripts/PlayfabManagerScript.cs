@@ -11,8 +11,11 @@ public class PlayfabManagerScript : MonoBehaviour
 
 	public void Start()
     {
-        var request = new LoginWithCustomIDRequest { CustomId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+        //var request = new LoginWithCustomIDRequest { CustomId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
+		var request1 = new LoginWithCustomIDRequest { CustomId = "play1", CreateAccount = true};
+		var request2 = new LoginWithCustomIDRequest { CustomId = "play2", CreateAccount = true};
+        PlayFabClientAPI.LoginWithCustomID(request1, OnLoginSuccess, OnLoginFailure);
+		PlayFabClientAPI.LoginWithCustomID(request2, OnLoginSuccess, OnLoginFailure);
     }
 
     private void OnLoginSuccess(LoginResult result)

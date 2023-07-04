@@ -683,8 +683,9 @@ MonoBehaviour:
   player2Name: player2
   player1Score: 100
   player2Score: 99
-  leaderboardKey: tlb
+  leaderboardKey: tank_leaderboard_DevEnv_1
   leaderboardID: 15793
+  count: 5
 --- !u!1 &1085964935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,6 +3165,18 @@ MonoBehaviour:
       - m_Target: {fileID: 944104935}
         m_TargetAssemblyTypeName: PlayfabManagerScript, Assembly-CSharp
         m_MethodName: SubmitScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 972793132}
+        m_TargetAssemblyTypeName: Leaderboard, Assembly-CSharp
+        m_MethodName: getLeaderboard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
