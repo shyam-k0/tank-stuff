@@ -481,6 +481,12 @@ MonoBehaviour:
   player1Name: 
   player2Name: 
   displayDeathScreen: 0
+  hasPowerup: 0000
+  damagePowerupTime: 6
+  speedPowerupTime: 6
+  player1score: 5
+  player2score: 15
+  lb: {fileID: 0}
 --- !u!4 &115031491
 Transform:
   m_ObjectHideFlags: 0

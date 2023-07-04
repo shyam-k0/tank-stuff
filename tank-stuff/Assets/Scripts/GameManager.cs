@@ -29,8 +29,10 @@ public class GameManager : MonoBehaviour
 	
 	[SerializeField] private float damagePowerupTime = 6.0f;
 	[SerializeField] private float speedPowerupTime = 6.0f;
+	[SerializeField] public int player1score = 5;
+    [SerializeField] public int player2score = 15;
 
-	private void Awake()
+    private void Awake()
 	{
 		if (gameManager == null)
 		{
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
 			temp.text = "Player 1 Wins!!";
 		}
 
-		Time.timeScale = 0f;
+        Time.timeScale = 0f;
 	}
 	public bool getDisplayDeathScreen()
 	{

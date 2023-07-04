@@ -4,16 +4,17 @@ using UnityEngine;
 using LootLocker.Requests;
 
 
-public class NewBehaviourScript : MonoBehaviour
+public class Leaderboard : MonoBehaviour
 {
-    public string player1Name;
-    public string player2Name;
-    public int player1Score;
-    public int player2Score;
+
+    public string player1Name = "Hello";
+    public string player2Name = "Bye";
+    public int player1Score = 5;
+    public int player2Score = 15;
 
     public int ID;
 
-    /*private void Start()
+    private void Start()
     {
         LootLockerSDKManager.StartGuestSession("Player", (response) =>
         {
@@ -26,21 +27,11 @@ public class NewBehaviourScript : MonoBehaviour
                 Debug.Log("Failed");
              }
         });
-    }*/
+    }
 
     public void SubmitScore()
     {
-        LootLockerSDKManager.SubmitScore(player1Name, player1Score, ID, (response) =>
-        {
-            if (response.success)
-            {
-                Debug.Log("Success");
-            }
-            else
-            {
-                Debug.Log("Failed");
-            }
-        });
+        Debug.Log(player2Name + " " + player2Score);
 
         LootLockerSDKManager.SubmitScore(player2Name, player2Score, ID, (response) =>
         {
@@ -65,6 +56,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         Debug.Log("Player 1: " + player1Name + " " + player1Score);
         Debug.Log("Player 1: " + player2Name + " " + player2Score);
+        SubmitScore();
     }
     
 }
