@@ -7,12 +7,14 @@ using LootLocker.Requests;
 public class Leaderboard : MonoBehaviour
 {
 
-    public string player1Name = "Hello";
-    public string player2Name = "Bye";
-    public int player1Score = 5;
-    public int player2Score = 15;
+    [SerializeField] private string player1Name = "player1";
+	[SerializeField] private string player2Name = "player2";
+	[SerializeField] private int player1Score = 100;
+	[SerializeField] private int player2Score = 300;
+	
 
-    public int ID;
+    [SerializeField] string leaderboardKey = "tank_leaderboard";
+	[SerializeField] int leaderboardID = 15793;
 
     private void Start()
     {
@@ -31,9 +33,20 @@ public class Leaderboard : MonoBehaviour
 
     public void SubmitScore()
     {
-        Debug.Log(player2Name + " " + player2Score);
 
-        LootLockerSDKManager.SubmitScore(player2Name, player2Score, ID, (response) =>
+        LootLockerSDKManager.SubmitScore(player1Name, player1Score, leaderboardID, (response) =>
+        {
+            if (response.success)
+            {
+                Debug.Log("Success");
+            }
+            else
+            {
+                Debug.Log("Failed");
+            }
+        });
+		
+		LootLockerSDKManager.SubmitScore(player2Name, player2Score, leaderboardID, (response) =>
         {
             if (response.success)
             {
@@ -46,7 +59,7 @@ public class Leaderboard : MonoBehaviour
         });
     }
 
-        public void sendToLeaderboard(string p1name, string p2name, int p1s, int p2s)
+    public void sendToLeaderboard(string p1name, string p2name, int p1s, int p2s)
         {
         
             player1Name = p1name;
