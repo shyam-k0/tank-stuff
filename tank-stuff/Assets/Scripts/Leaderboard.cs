@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Leaderboard : MonoBehaviour
@@ -26,6 +29,8 @@ public class Leaderboard : MonoBehaviour
 	private bool player1SubmitDone = false;
 	private bool player2SubmitDone = false;
 
+	public GameObject playerInfo;
+	public Transform position;
     private void Start()
     {
         LootLockerSDKManager.StartGuestSession("Player", (response) =>
@@ -33,6 +38,11 @@ public class Leaderboard : MonoBehaviour
             if (response.success)
             {
                 Debug.Log("Success");
+                Scene scene = SceneManager.GetActiveScene();
+                if (scene.name == "Leaderboards")
+                {
+                  getLeaderboard();
+                }
             }
             else
             {
@@ -120,22 +130,28 @@ public class Leaderboard : MonoBehaviour
         Debug.Log("Player 1: " + player1Name + " " + player1CurrentScore);
         Debug.Log("Player 2: " + player2Name + " " + player2CurrentScore);
     }
-	
-	public void getLeaderboard(){
-		LootLockerSDKManager.GetScoreList(leaderboardKey, count, 0, (response) =>
-		{
-			if (response.statusCode == 200) {
-				Debug.Log("Successful");
-				LootLockerLeaderboardMember[] members = response.items;
-				Debug.Log("-----------------LEADERBOARD-------------------");
-				Debug.Log("--Rank---------------Name-------------Score----");
-				for (int i = 0; i < members.Length; i++){
-					Debug.Log("    " + members[i].rank + "	                           " + members[i].member_id + "               	" + members[i].score);
-				}
-				Debug.Log("-----------------------------------------------");
-			} else {
-				Debug.Log("failed: " + response.Error);
-			}
+
+    public void getLeaderboard()
+    {
+        LootLockerSDKManager.GetScoreList(leaderboardKey, count, 0, (response) =>
+        {
+            if (response.statusCode == 200)
+            {
+
+                if (response.statusCode == 200)
+                {
+                    LootLockerLeaderboardMember[] members = response.items;
+                    for (int i = 0; i < members.Length; i++)
+                    {
+                        //Debug.Log(members[i].rank + "	" + members[i].member_id + "	" + members[i].score);
+                        GameObject player = Instantiate(playerInfo, position);
+                        TMP_Text[] texts = player.GetComponentsInChildren<TMP_Text>();
+                        texts[0].text = (members[i].rank).ToString();
+                        texts[1].text = members[i].member_id;
+                        texts[2].text = (members[i].score).ToString();
+                    }
+                }
+            }
 		});
 		
 	}
