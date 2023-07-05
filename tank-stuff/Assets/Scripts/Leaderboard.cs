@@ -12,9 +12,8 @@ public class Leaderboard : MonoBehaviour
 	[SerializeField] private int player1Score = 100;
 	[SerializeField] private int player2Score = 300;
 	
-
-    [SerializeField] string leaderboardKey = "tank_leaderboard_DevEnv_1";
-	[SerializeField] int leaderboardID = 15793;
+    private string leaderboardKey = "tank_leaderboard_DevEnv_1";
+	private int leaderboardID = 15793;
 	
 	[SerializeField] private int count = 5;
 
@@ -36,7 +35,7 @@ public class Leaderboard : MonoBehaviour
     public void SubmitScore()
     {
 
-        LootLockerSDKManager.SubmitScore(player1Name, player1Score, leaderboardID, (response) =>
+        LootLockerSDKManager.SubmitScore(player1Name, player1Score, leaderboardKey, (response) =>
         {
             if (response.success)
             {
@@ -48,7 +47,7 @@ public class Leaderboard : MonoBehaviour
             }
         });
 		
-		LootLockerSDKManager.SubmitScore(player2Name, player2Score, leaderboardID, (response) =>
+		LootLockerSDKManager.SubmitScore(player2Name, player2Score, leaderboardKey, (response) =>
         {
             if (response.success)
             {
@@ -75,7 +74,7 @@ public class Leaderboard : MonoBehaviour
     }
 	
 	public void getLeaderboard(){
-		LootLockerSDKManager.GetScoreList(leaderboardID, count, 0, (response) =>
+		LootLockerSDKManager.GetScoreList(leaderboardKey, count, 0, (response) =>
 		{
 			if (response.statusCode == 200) {
 				Debug.Log("Successful");
