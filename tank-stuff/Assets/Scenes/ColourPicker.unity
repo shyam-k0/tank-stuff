@@ -484,9 +484,8 @@ MonoBehaviour:
   hasPowerup: 0000
   damagePowerupTime: 6
   speedPowerupTime: 6
-  player1score: 5
-  player2score: 15
-  lb: {fileID: 0}
+  player1score: 30
+  player2score: 20
 --- !u!4 &115031491
 Transform:
   m_ObjectHideFlags: 0
@@ -1054,6 +1053,8 @@ MonoBehaviour:
   confirmButton: {fileID: 1715943496}
   player1Name: {fileID: 567396336}
   player2Name: {fileID: 2059693414}
+  player1NameSet: 0
+  player2NameSet: 0
 --- !u!4 &557260852
 Transform:
   m_ObjectHideFlags: 0
@@ -2891,8 +2892,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+    m_PressedColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2962,7 +2963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  m_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

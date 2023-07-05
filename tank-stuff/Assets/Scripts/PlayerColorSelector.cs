@@ -16,7 +16,8 @@ public class PlayerColorSelector : MonoBehaviour
 
 	[SerializeField] private TMP_InputField player1Name;
     [SerializeField] private TMP_InputField player2Name;
-
+	[SerializeField] private bool player1NameSet = false;
+	[SerializeField] private bool player2NameSet = false;
 
     void Start(){
 		setColorSprites();
@@ -24,7 +25,15 @@ public class PlayerColorSelector : MonoBehaviour
 	
     void Update()
     {
-		if (player1Choice != null && player2Choice != null){
+		if (player1Name.text.Length >= 1){
+			player1NameSet = true;
+		} else player1NameSet = false;
+		
+		if (player2Name.text.Length >= 1){
+			player2NameSet = true;
+		} else player2NameSet = false;
+		
+		if (player1Choice != null && player2Choice != null && player1NameSet && player2NameSet){
 			confirmButton.SetActive(true);
 		} else {
 			confirmButton.SetActive(false);

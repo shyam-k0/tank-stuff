@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
 	
 	[SerializeField] private float damagePowerupTime = 6.0f;
 	[SerializeField] private float speedPowerupTime = 6.0f;
-	[SerializeField] public int player1score = 5;
-    [SerializeField] public int player2score = 15;
+	[SerializeField] public int player1score = 20;
+    [SerializeField] public int player2score = 20;
 
     private void Awake()
 	{
@@ -179,6 +179,13 @@ public class GameManager : MonoBehaviour
 			return player1Name;
 		else 
 			return player2Name;
+	}
+	
+	public int getScore(int index){
+		if(index == 1)
+			return player1score;
+		else 
+			return player2score;
 	}
 	
 	public bool getHasPowerup(int index){
