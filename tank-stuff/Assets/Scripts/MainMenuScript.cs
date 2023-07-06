@@ -29,6 +29,15 @@ public class MainMenuScript : MonoBehaviour
 		
 	}
 
+    public void leaderboardSelection()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void MainManuSelection()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void playAgain()
     {
         Time.timeScale = 1.0f;

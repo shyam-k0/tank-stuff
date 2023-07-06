@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MultiGame.unity
     guid: c37908d06cbe84749b8490aee6ed4144
+  - enabled: 1
+    path: Assets/Scenes/Leaderboards.unity
+    guid: 5896e060db356c543ba855fe28512e21
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1b903909f43716742990769be0bc0ea8, type: 2}
