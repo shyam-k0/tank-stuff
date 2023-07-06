@@ -39,6 +39,7 @@ public class Leaderboard : MonoBehaviour
 	[SerializeField] private int placeholderCount;
 	
 	[SerializeField] private float refreshTime;
+	[SerializeField] private Slider refreshBar;
 	
 	
     private void Start()
@@ -65,8 +66,7 @@ public class Leaderboard : MonoBehaviour
 
 	public void Update()
 	{
-		bool check = GameManager.gameManager.getDisplayLeaderboard();
-		if (check)
+		if (GameManager.gameManager.getDisplayLeaderboard())
 		{
 			getLeaderboard();
             GameManager.gameManager.setDisplayLeaderboard(false);
@@ -184,6 +184,8 @@ public class Leaderboard : MonoBehaviour
             if (response.success)
                 {
                     LootLockerLeaderboardMember[] members = response.items;
+					refreshBar.value = 1;
+					LeanTween.value(gameObject, (value) => {refreshBar.value = value;}, 1f, 0f, refreshTime);
                     for (int i = 0; i < members.Length; i++)
                     {
                         //Debug.Log(members[i].rank + "	" + members[i].member_id + "	" + members[i].score);
@@ -214,5 +216,6 @@ public class Leaderboard : MonoBehaviour
 			yield return new WaitForSeconds(refreshTime);
 		}
 	}
+	
     
 }

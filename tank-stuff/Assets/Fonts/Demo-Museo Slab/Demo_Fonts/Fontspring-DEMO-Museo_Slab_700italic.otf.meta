@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 45698c7227c1549498c55c19938720e3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - FONTSPRING DEMO - Museo Slab 700
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 926b6a66ac10946469d4720957773e66, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
