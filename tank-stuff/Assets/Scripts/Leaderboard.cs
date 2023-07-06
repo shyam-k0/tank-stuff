@@ -5,7 +5,7 @@ using LootLocker.Requests;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+//0.3411765
 
 public class Leaderboard : MonoBehaviour
 {
@@ -37,9 +37,20 @@ public class Leaderboard : MonoBehaviour
 	
 	[SerializeField] private List<GameObject> placeholders = new List<GameObject>();
 	[SerializeField] private int placeholderCount;
+	[SerializeField] private List<Image> scoreBars = new List<Image>();
 	
 	[SerializeField] private float refreshTime;
 	[SerializeField] private Slider refreshBar;
+	
+	[SerializeField] private Color darkScoreBGColor = new Color(0f, 0f, 0f, 0.3843137f);
+	[SerializeField] private Color darkScoreBGColorTranparent = new Color(0f, 0f, 0f, 0f);
+
+	
+	[SerializeField] private Color gold;
+	[SerializeField] private Color silver;
+	[SerializeField] private Color bronze;
+	
+	private Scene scene;
 	
 	
     private void Start()
@@ -51,7 +62,7 @@ public class Leaderboard : MonoBehaviour
             if (response.success)
             {
                 Debug.Log("Success");
-                Scene scene = SceneManager.GetActiveScene();
+					scene = SceneManager.GetActiveScene();
                 if (scene.name == "Leaderboards")
                 {
                   StartCoroutine(refreshLeaderboard());
@@ -66,10 +77,12 @@ public class Leaderboard : MonoBehaviour
 
 	public void Update()
 	{
-		if (GameManager.gameManager.getDisplayLeaderboard())
+		if (scene.name == "Game")
 		{
-			getLeaderboard();
-            GameManager.gameManager.setDisplayLeaderboard(false);
+			if (GameManager.gameManager.getDisplayLeaderboard()){
+				getLeaderboard();
+				GameManager.gameManager.setDisplayLeaderboard(false);
+			}
         }
     }
 
@@ -191,11 +204,31 @@ public class Leaderboard : MonoBehaviour
                         //Debug.Log(members[i].rank + "	" + members[i].member_id + "	" + members[i].score);
 						if (placeholders[i].transform.childCount > 0)
 							Destroy(placeholders[i].transform.GetChild(0).gameObject);
+						if (i%2 != 1)
+							scoreBars[i].color = darkScoreBGColor;
+						if (i%2 == 1)
+							scoreBars[i].color = new Color(1f, 1f, 1f, 0f);
                         GameObject player = Instantiate(playerInfo, placeholders[i].transform);
                         TMP_Text[] texts = player.GetComponentsInChildren<TMP_Text>();
                         texts[0].text = (members[i].rank).ToString();
                         texts[1].text = members[i].member_id;
                         texts[2].text = (members[i].score).ToString();
+						if (members[i].rank == 1){
+							texts[0].color = gold;
+							texts[1].color = gold;
+							texts[2].color = gold;
+						}
+						if (members[i].rank == 2){
+							texts[0].color = silver;
+							texts[1].color = silver;
+							texts[2].color = silver;
+						}
+						if (members[i].rank == 3){
+							texts[0].color = bronze;
+							texts[1].color = bronze;
+							texts[2].color = bronze;
+						}
+						
                     }
 					destroyRemainingPlaceholderChildren(members.Length);
                 }
@@ -208,6 +241,12 @@ public class Leaderboard : MonoBehaviour
 			if (placeholders[i].transform.childCount > 0)
 				Destroy(placeholders[i].transform.GetChild(0).gameObject);
 		}
+		/*
+		for (int j = fromIndex; j < scoreBars.Count; j++){
+			if (j%2 == 1)
+				scoreBars[j].color = darkScoreBGColorTranparent;
+		}
+		*/
 	}
 	
 	IEnumerator refreshLeaderboard(){
