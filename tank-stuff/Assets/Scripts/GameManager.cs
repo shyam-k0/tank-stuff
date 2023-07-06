@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private string player1Name;
     [SerializeField] private string player2Name;
     public bool displayDeathScreen = false;
+	public bool displayLeaderboard = false;
 	[SerializeField] private bool[] hasPowerup = {false, false};
 	
 	[SerializeField] private float damagePowerupTime = 6.0f;
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("Player " + (player.GetComponent<PlayerInput>().playerIndex + 1) + " Died!");
 		displayDeathScreen = true;
+		displayLeaderboard = true;
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
 		TMP_Text temp = WinScreen.GetComponentInChildren<TMP_Text>();
 		int playerNumber = (player.GetComponent<PlayerInput>().playerIndex + 1);
@@ -137,7 +139,17 @@ public class GameManager : MonoBehaviour
 		return displayDeathScreen;
 	}
 
-	public float getSpeedMult(int index)
+	public bool getDisplayLeaderboard()
+	{
+		return displayLeaderboard;
+	}
+
+    public void setDisplayLeaderboard(bool dispLeaderboard)
+    {
+        displayLeaderboard = dispLeaderboard;
+    }
+
+    public float getSpeedMult(int index)
 	{
 		//Debug.Log("Speed value: " + speedMult[index]);
 		return speedMult[index];

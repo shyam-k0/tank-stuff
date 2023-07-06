@@ -7,6 +7,7 @@ public class DisplayWinScreen : MonoBehaviour
     [SerializeField] private GameObject Panel;
     [SerializeField] private GameObject Button;
     [SerializeField] private GameObject Scoreboard;
+
     // Start is called before the first frame update
     void Start()
     {

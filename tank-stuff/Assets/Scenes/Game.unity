@@ -401,8 +401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 51.08, y: -277.01}
+  m_SizeDelta: {x: 1248.3, y: 417.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &555833338
 GameObject:
@@ -812,7 +812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -550, y: -90}
+  m_AnchoredPosition: {x: -506, y: 61}
   m_SizeDelta: {x: 318.42, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712789898
@@ -1089,13 +1089,16 @@ MonoBehaviour:
   playerMemberIDs:
   - 
   - 
-  entryCount: 9
-  playerInfo: {fileID: 0}
-  position: {fileID: 0}
+  entryCount: 3
+  playerInfo: {fileID: 3328603848025104251, guid: f0b47f9eb1430294babe258e70842b94, type: 3}
+  position: {fileID: 425603518}
   rankList: []
   nameList: []
   scoreList: []
-  placeholders: []
+  placeholders:
+  - {fileID: 712789896}
+  - {fileID: 1074815042}
+  - {fileID: 1889015417}
   placeholderCount: 0
   refreshTime: 0
 --- !u!1 &1074815042
@@ -1133,7 +1136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -550, y: -160}
+  m_AnchoredPosition: {x: -535, y: -38}
   m_SizeDelta: {x: 318.42, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1074815044
@@ -4282,7 +4285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -550, y: -240}
+  m_AnchoredPosition: {x: -530, y: -147}
   m_SizeDelta: {x: 318.42, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889015419

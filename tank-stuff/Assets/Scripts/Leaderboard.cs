@@ -63,7 +63,15 @@ public class Leaderboard : MonoBehaviour
         });
     }
 
-
+	public void Update()
+	{
+		bool check = GameManager.gameManager.getDisplayLeaderboard();
+		if (check)
+		{
+			getLeaderboard();
+            GameManager.gameManager.setDisplayLeaderboard(false);
+        }
+    }
 
     public void SubmitScore()
     {
