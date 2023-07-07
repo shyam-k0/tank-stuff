@@ -5,7 +5,6 @@ using LootLocker.Requests;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-//0.3411765
 
 public class Leaderboard : MonoBehaviour
 {
@@ -38,10 +37,6 @@ public class Leaderboard : MonoBehaviour
 	
 	[SerializeField] private float refreshTime;
 	[SerializeField] private Slider refreshBar;
-	
-	[SerializeField] private Color darkScoreBGColor = new Color(0f, 0f, 0f, 0.3843137f);
-	[SerializeField] private Color darkScoreBGColorTranparent = new Color(0f, 0f, 0f, 0f);
-
 	
 	[SerializeField] private Color gold;
 	[SerializeField] private Color silver;
@@ -187,10 +182,7 @@ public class Leaderboard : MonoBehaviour
                         //Debug.Log(members[i].rank + "	" + members[i].member_id + "	" + members[i].score);
 						if (placeholders[i].transform.childCount > 0)
 							Destroy(placeholders[i].transform.GetChild(0).gameObject);
-						if (i%2 != 1)
-							scoreBars[i].color = darkScoreBGColor;
-						if (i%2 == 1)
-							scoreBars[i].color = new Color(1f, 1f, 1f, 0f);
+
                         GameObject player = Instantiate(playerInfo, placeholders[i].transform);
                         TMP_Text[] texts = player.GetComponentsInChildren<TMP_Text>();
                         texts[0].text = (members[i].rank).ToString();
@@ -224,12 +216,6 @@ public class Leaderboard : MonoBehaviour
 			if (placeholders[i].transform.childCount > 0)
 				Destroy(placeholders[i].transform.GetChild(0).gameObject);
 		}
-		/*
-		for (int j = fromIndex; j < scoreBars.Count; j++){
-			if (j%2 == 1)
-				scoreBars[j].color = darkScoreBGColorTranparent;
-		}
-		*/
 	}
 	
 	IEnumerator refreshLeaderboard(){
