@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerProperties : MonoBehaviour
 {
-	string playerName;
-    int currentHealth;
+	[SerializeField] string playerName;
+    [SerializeField] int currentHealth;
 	[SerializeField] int maxHealth;
 	[SerializeField] private HealthBarControllerScript healthbar;
 	
 	void Start(){
 		currentHealth = maxHealth;
 		healthbar = gameObject.GetComponentInChildren<HealthBarControllerScript>();
+		playerName = GameManager.gameManager.getName(gameObject.GetComponent<PlayerInput>().playerIndex + 1);
 	}
 	
 	public void setHealth(int health){

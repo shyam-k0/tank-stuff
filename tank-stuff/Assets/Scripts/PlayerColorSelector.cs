@@ -18,7 +18,7 @@ public class PlayerColorSelector : MonoBehaviour
     [SerializeField] private TMP_InputField player2Name;
 	[SerializeField] private bool player1NameSet = false;
 	[SerializeField] private bool player2NameSet = false;
-
+	
     void Start(){
 		setColorSprites();
 		if (GameManager.gameManager.getName(0) != "" && GameManager.gameManager.getName(1) != ""){
@@ -27,6 +27,7 @@ public class PlayerColorSelector : MonoBehaviour
 			player1Name.readOnly = true;
 			player2Name.readOnly = true;
 		}
+		confirmButton.GetComponent<Button>().onClick.AddListener(GameManager.gameManager.startGame);
 	}
 	
     void Update()

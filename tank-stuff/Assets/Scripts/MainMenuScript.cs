@@ -42,8 +42,8 @@ public class MainMenuScript : MonoBehaviour
     }
     public void playAgain()
     {
-        Time.timeScale = 1.0f;
-            SceneManager.LoadScene(1);
+		GameManager.gameManager.resetGameManagerValues();
+        SceneManager.LoadScene(1);
 
     }
 

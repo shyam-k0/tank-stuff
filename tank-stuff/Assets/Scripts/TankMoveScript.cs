@@ -13,23 +13,27 @@ public class TankMoveScript : MonoBehaviour
 	
 	[SerializeField] private float pushForce = 0;
 	[SerializeField] private int player;
+	[SerializeField] private bool continueMoving = true;
 	
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<PlayerInput>().playerIndex;
-}
+		continueMoving = !GameManager.gameManager.getDisplayDeathScreen();
+	}
 
 
 	// Using FixedUpdate because Physics is used by rigidbody
 	private void FixedUpdate(){
-		rb.velocity = transform.up * speed * GameManager.gameManager.getSpeedMult(player);
-		
-		//horizontalInput = Input.GetAxisRaw("Horizontal");
-		float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
-		//Debug.Log(rb.velocity);
-		transform.Rotate(Vector3.forward * rotation);
+		if (continueMoving){
+			rb.velocity = transform.up * speed * GameManager.gameManager.getSpeedMult(player);
+			//horizontalInput = Input.GetAxisRaw("Horizontal");
+			float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
+			//Debug.Log(rb.velocity);
+			transform.Rotate(Vector3.forward * rotation);
+			continueMoving = !GameManager.gameManager.getDisplayDeathScreen();
+		}
 		
 	}
 	

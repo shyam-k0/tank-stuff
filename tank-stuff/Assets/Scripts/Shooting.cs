@@ -22,6 +22,8 @@ public class Shooting : MonoBehaviour
 	
 	[SerializeField] private IEnumerator shooter;
 	private PlayerInput currentTank;
+	
+	[SerializeField] private bool continueShooting = true;
 
     // Update is called once per frame
     void Start()
@@ -29,14 +31,18 @@ public class Shooting : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         defaultColor = sr.color;
 		currentTank = gameObject.GetComponent<PlayerInput>();
+		continueShooting = !GameManager.gameManager.getDisplayDeathScreen();
         StartCoroutine(Shoot());   
     }
 	
+	
+	
+	void Update(){
+		continueShooting = !GameManager.gameManager.getDisplayDeathScreen();		
+		
 	// Uncomment this Update and Comment out the StartCoroutine above for shooting on command
 	// Needs to be modified for separate player controls
-	/*
-	void Update(){
-		
+		/*
 		if (Input.GetKeyDown("space")) { 
 			if (shooter != null)
 				StopCoroutine(shooter);
@@ -46,13 +52,13 @@ public class Shooting : MonoBehaviour
 		if (Input.GetKeyUp("space")){
 			StopCoroutine(shooter);
 		}
+		*/		
 	}
 
-	*/
 
     IEnumerator Shoot()
     {
-        while (true)
+        while (continueShooting)
         {
 			
 			GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

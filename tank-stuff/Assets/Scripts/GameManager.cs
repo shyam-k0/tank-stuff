@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] private string player1Name;
     [SerializeField] private string player2Name;
-    public bool displayDeathScreen = false;
-	public bool displayLeaderboard = false;
+    [SerializeField] private bool displayDeathScreen = false;
+	[SerializeField] private bool displayLeaderboard = false;
 	[SerializeField] private bool[] hasPowerup = {false, false};
 	
 	[SerializeField] private float damagePowerupTime = 6.0f;
@@ -63,9 +63,9 @@ public class GameManager : MonoBehaviour
 		playerList = players;
 		//playersSet = true;
 
-		player1Health = playerList[0].GetComponent<PlayerProperties>().getHealth();
-		player2Health = playerList[1].GetComponent<PlayerProperties>().getHealth();
-
+		player1Health = playerList[0].gameObject.GetComponent<PlayerProperties>().getMaxHealth();
+		player2Health = playerList[1].gameObject.GetComponent<PlayerProperties>().getMaxHealth();
+		
 		Debug.Log("Players Set!");
 	}
 
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 			temp.text = "Player 1 Wins!!";
 		}
 
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
 	}
 	public bool getDisplayDeathScreen()
 	{
@@ -238,6 +238,29 @@ public class GameManager : MonoBehaviour
 	
 	public float getDamagePowerupTime(){
 		return damagePowerupTime;
+	}
+	
+	public void resetGameManagerValues(){
+		displayDeathScreen = false;
+		displayLeaderboard = false;
+		
+		player1Choice = null;
+		player2Choice = null;
+		
+		player1Health = 0;
+		player2Health = 0;
+		
+		speedMult[0] = 1;
+		speedMult[1] = 1;
+		
+		dmgMult[0] = 1;
+		dmgMult[1] = 1;
+		
+		hasPowerup[0] = false;
+		hasPowerup[1] = false;
+		
+		playerList[0] = null;
+		playerList[1] = null;
 	}
 	
 }
