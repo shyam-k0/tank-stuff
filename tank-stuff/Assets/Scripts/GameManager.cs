@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
 		displayDeathScreen = true;
 		displayLeaderboard = true;
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
-		TMP_Text temp = WinScreen.GetComponentInChildren<TMP_Text>();
+		TMP_Text temp = WinScreen.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
 		int playerNumber = (player.GetComponent<PlayerInput>().playerIndex + 1);
 		if (playerNumber == 1)
 		{

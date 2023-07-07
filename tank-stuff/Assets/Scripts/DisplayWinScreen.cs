@@ -7,6 +7,11 @@ public class DisplayWinScreen : MonoBehaviour
     [SerializeField] private GameObject Panel;
     [SerializeField] private GameObject Button;
     [SerializeField] private GameObject Scoreboard;
+    [SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject Stats;
+    [SerializeField] private GameObject playerWinText;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +28,9 @@ public class DisplayWinScreen : MonoBehaviour
             Panel.SetActive(true);
             Button.SetActive(true);
             Scoreboard.SetActive(true);
+            MainMenu.SetActive(true);
+            Stats.SetActive(true);
+            playerWinText.SetActive(true);
         }
     }
 }
