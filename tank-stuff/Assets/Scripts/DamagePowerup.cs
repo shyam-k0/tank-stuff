@@ -12,6 +12,7 @@ public class DamagePowerup : MonoBehaviour
             int index = col.gameObject.GetComponent<PlayerInput>().playerIndex;
 			if (!GameManager.gameManager.getHasPowerup(index)){
 				GameManager.gameManager.setDamageMult(2.0f, index);
+				GameManager.gameManager.incrementDamagePowerupsTaken(index);
 				col.gameObject.GetComponent<PowerupTimer>().setDamageGainedTrue();
 				Destroy(gameObject);
 			}

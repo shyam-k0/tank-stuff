@@ -12,6 +12,7 @@ public class SpeedPowerup : MonoBehaviour
             int index = col.gameObject.GetComponent<PlayerInput>().playerIndex;
 			if (!GameManager.gameManager.getHasPowerup(index)){
 				GameManager.gameManager.setSpeedMult(2f, index);
+				GameManager.gameManager.incrementSpeedPowerupsTaken(index);
 				col.gameObject.GetComponent<PowerupTimer>().setSpeedGainedTrue();
 				Destroy(gameObject);
 			}

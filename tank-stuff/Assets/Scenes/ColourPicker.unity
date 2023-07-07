@@ -486,8 +486,20 @@ MonoBehaviour:
   hasPowerup: 0000
   damagePowerupTime: 6
   speedPowerupTime: 6
-  player1score: 30
-  player2score: 20
+  player1FinalScore: 0
+  player2FinalScore: 0
+  damageTaken: 0000000000000000
+  hitsTaken: 0000000000000000
+  speedPowerupsTaken: 0000000000000000
+  damagePowerupsTaken: 0000000000000000
+  healthPowerupsTaken: 0000000000000000
+  damageTakenFactor: 0.6
+  hitsTakenFactor: 0
+  speedPowerupsTakenFactor: 20
+  damagePowerupsTakenFactor: -10
+  healthPowerupsTakenFactor: -5
+  winBonus: 50
+  lossPenalty: 50
 --- !u!4 &115031491
 Transform:
   m_ObjectHideFlags: 0

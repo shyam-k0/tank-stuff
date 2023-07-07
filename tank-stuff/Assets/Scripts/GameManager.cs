@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
 	public Sprite player1Choice, player2Choice;
 	[SerializeField] private int player1Health, player2Health;
 
-	//private bool playersSet = false;
-
 	[SerializeField] private int maxHealth;
 
 	public GameObject WinScreen;
@@ -30,8 +28,24 @@ public class GameManager : MonoBehaviour
 	
 	[SerializeField] private float damagePowerupTime = 6.0f;
 	[SerializeField] private float speedPowerupTime = 6.0f;
-	[SerializeField] public int player1score = 20;
-    [SerializeField] public int player2score = 20;
+	[SerializeField] public int player1FinalScore;
+    [SerializeField] public int player2FinalScore;
+	
+	//[SerializeField] private int[] baseScore = {0, 0};
+	[SerializeField] private int[] damageTaken = {0, 0};
+	[SerializeField] private int[] hitsTaken = {0, 0};
+	[SerializeField] private int[] speedPowerupsTaken = {0, 0};
+	[SerializeField] private int[] damagePowerupsTaken = {0, 0};
+	[SerializeField] private int[] healthPowerupsTaken = {0, 0};
+	
+	[SerializeField] private float damageTakenFactor;
+	[SerializeField] private float hitsTakenFactor;
+	[SerializeField] private float speedPowerupsTakenFactor;
+	[SerializeField] private float damagePowerupsTakenFactor;
+	[SerializeField] private float healthPowerupsTakenFactor;
+	[SerializeField] private int winBonus;
+	[SerializeField] private int lossPenalty;
+	
 
     private void Awake()
 	{
@@ -61,7 +75,6 @@ public class GameManager : MonoBehaviour
 	public void setPlayers(PlayerInput[] players)
 	{
 		playerList = players;
-		//playersSet = true;
 
 		player1Health = playerList[0].gameObject.GetComponent<PlayerProperties>().getMaxHealth();
 		player2Health = playerList[1].gameObject.GetComponent<PlayerProperties>().getMaxHealth();
@@ -113,18 +126,32 @@ public class GameManager : MonoBehaviour
 		{
 			player2Health -= dmg;
 		}
+		hitsTaken[index - 1] += 1;
+		damageTaken[index - 1] += dmg;
 		player.gameObject.GetComponent<PlayerProperties>().damagePlayer(dmg);
+		
 	}
 
 	
 	public void deathScreen(GameObject player)
 	{
-		Debug.Log("Player " + (player.GetComponent<PlayerInput>().playerIndex + 1) + " Died!");
+		int playerNumber = (player.GetComponent<PlayerInput>().playerIndex + 1);
+		Debug.Log("Player " + (playerNumber) + " Died!");
+		
+		if (playerNumber == 1)
+		{
+			calculateScore(1);
+		}
+		else
+		{
+			calculateScore(0);
+		}
+		
 		displayDeathScreen = true;
 		displayLeaderboard = true;
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
 		TMP_Text temp = WinScreen.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
-		int playerNumber = (player.GetComponent<PlayerInput>().playerIndex + 1);
+		
 		if (playerNumber == 1)
 		{
 			temp.text = "Player 2 Wins!!";
@@ -197,9 +224,9 @@ public class GameManager : MonoBehaviour
 	
 	public int getScore(int index){
 		if(index == 1)
-			return player1score;
+			return player1FinalScore;
 		else 
-			return player2score;
+			return player2FinalScore;
 	}
 	
 	public bool getHasPowerup(int index){
@@ -261,6 +288,33 @@ public class GameManager : MonoBehaviour
 		
 		playerList[0] = null;
 		playerList[1] = null;
+	}
+	
+	public void incrementSpeedPowerupsTaken(int index){
+		speedPowerupsTaken[index] += 1;
+	}
+	
+	public void incrementDamagePowerupsTaken(int index){
+		damagePowerupsTaken[index] += 1;
+	}
+	
+	public void incrementHealthPowerupsTaken(int index){
+		healthPowerupsTaken[index] += 1;
+	}
+	
+	public void calculateScore(int winnerIndex){
+		player1FinalScore = (int)(((damageTaken[1] - damageTaken[0]) * damageTakenFactor) + (speedPowerupsTaken[0] * speedPowerupsTakenFactor) + (damagePowerupsTaken[0] * damagePowerupsTakenFactor) + (healthPowerupsTaken[0] * healthPowerupsTakenFactor));
+		
+		player2FinalScore = (int)(((damageTaken[0] - damageTaken[1]) * damageTakenFactor) + (speedPowerupsTaken[1] * speedPowerupsTakenFactor) + (damagePowerupsTaken[1] * damagePowerupsTakenFactor) + (healthPowerupsTaken[1] * healthPowerupsTakenFactor));
+		Debug.Log("" + player1FinalScore + " dmgtkn " + (damageTaken[1] - damageTaken[0]) + " spd " + (speedPowerupsTaken[0] * speedPowerupsTakenFactor) + " dmgpwp " + (damagePowerupsTaken[0] * damagePowerupsTakenFactor) + " hlthtkn " + (healthPowerupsTaken[1] * healthPowerupsTakenFactor) + " hits " + hitsTaken[1]);
+		Debug.Log(player2FinalScore);
+		if (winnerIndex == 0){
+			player1FinalScore += winBonus;
+			player2FinalScore -= lossPenalty;
+		} else {
+			player1FinalScore -= lossPenalty;
+			player2FinalScore += winBonus; 
+		}
 	}
 	
 }

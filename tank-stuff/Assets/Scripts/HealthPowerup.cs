@@ -16,6 +16,7 @@ public class HealthPowerup : MonoBehaviour
             int index = tank.playerIndex;
 			if (player.getHealth() < player.getMaxHealth()){
 				GameManager.gameManager.healthPowerup(index, healthAmount);
+				GameManager.gameManager.incrementHealthPowerupsTaken(index);
 				Destroy(gameObject);
 			}
         }
