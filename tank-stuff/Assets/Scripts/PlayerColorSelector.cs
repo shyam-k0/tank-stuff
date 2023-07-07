@@ -18,6 +18,8 @@ public class PlayerColorSelector : MonoBehaviour
     [SerializeField] private TMP_InputField player2Name;
 	[SerializeField] private bool player1NameSet = false;
 	[SerializeField] private bool player2NameSet = false;
+	[SerializeField] private GameObject sameNameWarning;
+	[SerializeField] private bool namesAreSame = false;
 	
     void Start(){
 		setColorSprites();
@@ -40,11 +42,22 @@ public class PlayerColorSelector : MonoBehaviour
 			player2NameSet = true;
 		} else player2NameSet = false;
 		
-		if (player1Choice != null && player2Choice != null && player1NameSet && player2NameSet){
+		if (player1Name.text == player2Name.text && player1Name.text != "" && player2Name.text != ""){
+			namesAreSame = true;
+			sameNameWarning.SetActive(true);
+		} else {
+			namesAreSame = false;
+			sameNameWarning.SetActive(false);
+		}
+		
+		if (player1Choice != null && player2Choice != null && player1NameSet && player2NameSet && !namesAreSame){
 			confirmButton.SetActive(true);
 		} else {
 			confirmButton.SetActive(false);
 		}
+		
+		
+		
     }
 
 	
