@@ -21,6 +21,12 @@ public class PlayerColorSelector : MonoBehaviour
 
     void Start(){
 		setColorSprites();
+		if (GameManager.gameManager.getName(0) != "" && GameManager.gameManager.getName(1) != ""){
+			player1Name.text = GameManager.gameManager.getName(0);
+			player2Name.text = GameManager.gameManager.getName(1);
+			player1Name.readOnly = true;
+			player2Name.readOnly = true;
+		}
 	}
 	
     void Update()

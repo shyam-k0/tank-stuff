@@ -36,6 +36,8 @@ public class MainMenuScript : MonoBehaviour
 
     public void MainManuSelection()
     {
+		GameObject gm = GameObject.FindWithTag("GameManager");
+		Destroy(gm);
         SceneManager.LoadScene(0);
     }
     public void playAgain()
@@ -44,8 +46,6 @@ public class MainMenuScript : MonoBehaviour
             SceneManager.LoadScene(1);
 
     }
-
-
 
     public void multiModeSelection(){
         Time.timeScale = 1.0f;

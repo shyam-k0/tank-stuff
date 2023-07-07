@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - PlayerWinScreen
   - Scoreboard
+  - GameManager
   layers:
   - Default
   - TransparentFX

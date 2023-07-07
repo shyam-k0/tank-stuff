@@ -25,9 +25,6 @@ public class Leaderboard : MonoBehaviour
 	private int leaderboardID = 15793;
 	
 	[SerializeField] private int entryCount = 9;
-	
-	private bool player1SubmitDone = false;
-	private bool player2SubmitDone = false;
 
 	[SerializeField] private GameObject playerInfo;
 	[SerializeField] private Transform position;
@@ -62,7 +59,7 @@ public class Leaderboard : MonoBehaviour
             if (response.success)
             {
                 Debug.Log("Success");
-					scene = SceneManager.GetActiveScene();
+				scene = SceneManager.GetActiveScene();
                 if (scene.name == "Leaderboards")
                 {
                   StartCoroutine(refreshLeaderboard());
@@ -93,19 +90,12 @@ public class Leaderboard : MonoBehaviour
         {
             if (response.success)
             {
-				player1SubmitDone = true;
-                Debug.Log("Player 1 Score Submit Success : " + player1SubmitDone);
+                Debug.Log("Player 1 Score Submit Success");
 				Debug.Log("Player 1: " + player1Name + " " + (player1CurrentScore + player1PreviousScore));
-				
-				if (player1SubmitDone && player2SubmitDone)
-					getLeaderboard();
             }
             else
             {
                 Debug.Log("Player 1 Score Submit Failed : " + response.Error);
-				player1SubmitDone = true;
-				if (player1SubmitDone && player2SubmitDone)
-					getLeaderboard();
             }
         });
 		
@@ -113,19 +103,12 @@ public class Leaderboard : MonoBehaviour
         {
             if (response.success)
             {
-				player2SubmitDone = true;
-                Debug.Log("Player 2 Score Submit Success : " + player2SubmitDone);
+                Debug.Log("Player 2 Score Submit Success");
 				Debug.Log("Player 2: " + player2Name + " " + (player2CurrentScore + player2PreviousScore));
-				
-				if (player1SubmitDone && player2SubmitDone)
-					getLeaderboard();
             }
             else
             {
                 Debug.Log("Player 2 Score Submit Failed : " + response.Error);
-				player2SubmitDone = true;
-				if (player1SubmitDone && player2SubmitDone)
-					getLeaderboard();
             }
         });
     }

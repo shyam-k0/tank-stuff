@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 115031490}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,6 +482,7 @@ MonoBehaviour:
   player1Name: 
   player2Name: 
   displayDeathScreen: 0
+  displayLeaderboard: 0
   hasPowerup: 0000
   damagePowerupTime: 6
   speedPowerupTime: 6
