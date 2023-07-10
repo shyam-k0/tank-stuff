@@ -20,7 +20,7 @@ public class TankMoveScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<PlayerInput>().playerIndex;
-		continueMoving = !GameManager.gameManager.getDisplayDeathScreen();
+		continueMoving = GameManager.gameManager.getGamePlaying();
 	}
 
 
@@ -32,7 +32,7 @@ public class TankMoveScript : MonoBehaviour
 			float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
 			//Debug.Log(rb.velocity);
 			transform.Rotate(Vector3.forward * rotation);
-			continueMoving = !GameManager.gameManager.getDisplayDeathScreen();
+			continueMoving = GameManager.gameManager.getGamePlaying();
 		}
 		
 	}

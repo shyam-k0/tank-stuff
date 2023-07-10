@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private int winBonus;
 	[SerializeField] private int lossPenalty;
 	
+	[SerializeField] private bool gamePlaying = true;
+	
 
     private void Awake()
 	{
@@ -149,6 +151,7 @@ public class GameManager : MonoBehaviour
 		
 		displayDeathScreen = true;
 		displayLeaderboard = true;
+		gamePlaying = false;
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
 		TMP_Text temp = WinScreen.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
 		
@@ -270,6 +273,7 @@ public class GameManager : MonoBehaviour
 	public void resetGameManagerValues(){
 		displayDeathScreen = false;
 		displayLeaderboard = false;
+		gamePlaying = true;
 		
 		player1Choice = null;
 		player2Choice = null;
@@ -317,4 +321,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
 	
+	public bool getGamePlaying(){
+		return gamePlaying;
+	}
+	
+	public void setGamePlaying(bool val){
+		gamePlaying = val;
+	}
 }

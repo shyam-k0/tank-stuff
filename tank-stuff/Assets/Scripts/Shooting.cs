@@ -38,7 +38,7 @@ public class Shooting : MonoBehaviour
 	
 	
 	void Update(){
-		continueShooting = !GameManager.gameManager.getDisplayDeathScreen();		
+		continueShooting = GameManager.gameManager.getGamePlaying();		
 		
 	// Uncomment this Update and Comment out the StartCoroutine above for shooting on command
 	// Needs to be modified for separate player controls

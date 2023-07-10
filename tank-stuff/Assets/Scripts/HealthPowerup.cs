@@ -24,6 +24,6 @@ public class HealthPowerup : MonoBehaviour
 
     public void Awake()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 6);
     }
 }
