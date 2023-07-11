@@ -8,6 +8,9 @@ public class IdleTimeoutScript : MonoBehaviour
 	[SerializeField] private int timeRemaining;
 	
 	[SerializeField] private MainMenuScript mover;
+	private bool disableEsc = false;
+	[SerializeField] private bool gameScene = false;
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,11 @@ public class IdleTimeoutScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (gameScene){
+			disableEsc = GameManager.gameManager.getGamePlaying();
+		}
+		
+		if (Input.GetKeyDown(KeyCode.Escape) && !disableEsc)
         {
             mover.MainMenuSelection();
         }

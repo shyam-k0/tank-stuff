@@ -2387,6 +2387,7 @@ MonoBehaviour:
   time: 60
   timeRemaining: 0
   mover: {fileID: 555833339}
+  gameScene: 1
 --- !u!1 &1085964935
 GameObject:
   m_ObjectHideFlags: 0
