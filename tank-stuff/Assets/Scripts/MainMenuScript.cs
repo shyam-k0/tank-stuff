@@ -34,7 +34,7 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
-    public void MainManuSelection()
+    public void MainMenuSelection()
     {
 		GameObject gm = GameObject.FindWithTag("GameManager");
 		Destroy(gm);

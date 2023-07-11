@@ -1742,6 +1742,7 @@ GameObject:
   - component: {fileID: 1246439066}
   - component: {fileID: 1246439067}
   - component: {fileID: 1246439068}
+  - component: {fileID: 1246439069}
   m_Layer: 0
   m_Name: LeaderboardController
   m_TagString: Untagged
@@ -1831,6 +1832,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overlay: {fileID: 0}
   time: 1
+--- !u!114 &1246439069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246439064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f43df242e8e724696ea65a3e756765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: -1
+  timeRemaining: 0
+  mover: {fileID: 1246439068}
 --- !u!1 &1305446611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,7 +2488,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1246439068}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: MainManuSelection
+        m_MethodName: MainMenuSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

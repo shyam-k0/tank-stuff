@@ -14,6 +14,7 @@ public class TankMoveScript : MonoBehaviour
 	//[SerializeField] private float pushForce = 0;
 	[SerializeField] private int player;
 	[SerializeField] private bool continueMoving;
+	[SerializeField] private IdleTimeoutScript idleTimeout;
 	
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class TankMoveScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 		player = gameObject.GetComponent<PlayerInput>().playerIndex;
 		continueMoving = GameManager.gameManager.getGamePlaying();
+		idleTimeout = GameObject.Find("/TimerManager").GetComponent<IdleTimeoutScript>();
 	}
 
 
@@ -53,6 +55,8 @@ public class TankMoveScript : MonoBehaviour
 	
 	public void OnMove(InputAction.CallbackContext context){
 		horizontalInput = context.ReadValue<Vector2>().x;
+		if (horizontalInput == 1 || horizontalInput == -1)
+			idleTimeout.restartTimer();
 	}
 
 }
