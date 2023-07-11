@@ -15,12 +15,36 @@ public class PlayerSpawnScript : MonoBehaviour
 	[SerializeField] private Sprite p1, p2;
 
 	private string[] PlayerName;
+	private bool showTutorialOverlay;
+	[SerializeField] private GameObject tutorialOverlay;
+	[SerializeField] private GameObject instructionOverlay;
+	[SerializeField] private GameObject timer;
+	[SerializeField] private GameObject player1Text;
+	[SerializeField] private GameObject player2Text;
+	private TMP_Text timerText;
+	[SerializeField] private int time = 3;
+	
+	private bool pregameInputPossible = true;
 	
     // Start is called before the first frame update
     void Start()
     {
+		showTutorialOverlay = !GameManager.gameManager.getGamePlaying();
 		InstantiatePlayers();
+		timerText = timer.GetComponent<TMP_Text>();
+		player1Text.GetComponent<TMP_Text>().text = GameManager.gameManager.getName(1);
+		player2Text.GetComponent<TMP_Text>().text = GameManager.gameManager.getName(2);
     }
+	
+	void Update(){
+		if (Input.GetKeyDown("space") && pregameInputPossible)
+        {
+			pregameInputPossible = false;
+            instructionOverlay.SetActive(false);
+			timer.SetActive(true);
+			StartCoroutine(startPreGameTimer());
+        }
+	}
 	
 	public void InstantiatePlayers(){
 		
@@ -52,7 +76,18 @@ public class PlayerSpawnScript : MonoBehaviour
 	{
         players[0].gameObject.GetComponentInChildren<TMP_Text>().text = GameManager.gameManager.getName(1);
         players[1].gameObject.GetComponentInChildren<TMP_Text>().text = GameManager.gameManager.getName(2);
-
     }
+	
+	IEnumerator startPreGameTimer(){
+		while(true){
+			timerText.text = time.ToString();
+			time--;
+			yield return new WaitForSeconds(1f);
+			if (time == 0){
+				tutorialOverlay.SetActive(false);
+				GameManager.gameManager.setGamePlaying(true);
+			}
+		}
+	}
 	
 }

@@ -11,9 +11,9 @@ public class TankMoveScript : MonoBehaviour
 	
 	Rigidbody2D rb;
 	
-	[SerializeField] private float pushForce = 0;
+	//[SerializeField] private float pushForce = 0;
 	[SerializeField] private int player;
-	[SerializeField] private bool continueMoving = true;
+	[SerializeField] private bool continueMoving;
 	
     // Start is called before the first frame update
     void Start()
@@ -32,11 +32,13 @@ public class TankMoveScript : MonoBehaviour
 			float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
 			//Debug.Log(rb.velocity);
 			transform.Rotate(Vector3.forward * rotation);
-			continueMoving = GameManager.gameManager.getGamePlaying();
 		}
+		continueMoving = GameManager.gameManager.getGamePlaying();
 		
 	}
 	
+	// Code for pushback from wall on collision. Didn't work tho. Scrapped it.
+	/*
 	void OnCollisionEnter2D(Collision2D c){
 		
 		if (c.gameObject.tag == "Wall"){
@@ -47,6 +49,7 @@ public class TankMoveScript : MonoBehaviour
 			
 		}
 	}
+	*/
 	
 	public void OnMove(InputAction.CallbackContext context){
 		horizontalInput = context.ReadValue<Vector2>().x;

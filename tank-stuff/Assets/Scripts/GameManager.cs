@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private int winBonus;
 	[SerializeField] private int lossPenalty;
 	
-	[SerializeField] private bool gamePlaying = true;
+	[SerializeField] private bool gamePlaying = false;
 	
 
     private void Awake()
@@ -273,7 +273,7 @@ public class GameManager : MonoBehaviour
 	public void resetGameManagerValues(){
 		displayDeathScreen = false;
 		displayLeaderboard = false;
-		gamePlaying = true;
+		gamePlaying = false;
 		
 		player1Choice = null;
 		player2Choice = null;
@@ -292,6 +292,19 @@ public class GameManager : MonoBehaviour
 		
 		playerList[0] = null;
 		playerList[1] = null;
+		
+		player1FinalScore = 0;
+		player2FinalScore = 0;
+		hitsTaken[0] = 0;
+		hitsTaken[1] = 0;
+		damageTaken[0] = 0;
+		damageTaken[1] = 0;
+		speedPowerupsTaken[0] = 0;
+		speedPowerupsTaken[1] = 0;
+		healthPowerupsTaken[0] = 0;
+		healthPowerupsTaken[1] = 0;
+		damagePowerupsTaken[0] = 0;
+		damagePowerupsTaken[1] = 0;
 	}
 	
 	public void incrementSpeedPowerupsTaken(int index){

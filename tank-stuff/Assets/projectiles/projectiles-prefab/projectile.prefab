@@ -161,3 +161,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  tankIndex: 0
+  timeToColor: 0.05

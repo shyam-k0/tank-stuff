@@ -495,12 +495,12 @@ MonoBehaviour:
   healthPowerupsTaken: 0000000000000000
   damageTakenFactor: 0.6
   hitsTakenFactor: 0
-  speedPowerupsTakenFactor: 20
+  speedPowerupsTakenFactor: 10
   damagePowerupsTakenFactor: -10
   healthPowerupsTakenFactor: -10
-  winBonus: 30
+  winBonus: 20
   lossPenalty: 20
-  gamePlaying: 1
+  gamePlaying: 0
 --- !u!4 &115031491
 Transform:
   m_ObjectHideFlags: 0

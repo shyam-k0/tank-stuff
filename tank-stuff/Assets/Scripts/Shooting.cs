@@ -22,8 +22,9 @@ public class Shooting : MonoBehaviour
 	
 	[SerializeField] private IEnumerator shooter;
 	private PlayerInput currentTank;
+	[SerializeField] private int currentPlayerIndex; 
 	
-	[SerializeField] private bool continueShooting = true;
+	[SerializeField] private bool continueShooting;
 
     // Update is called once per frame
     void Start()
@@ -31,7 +32,8 @@ public class Shooting : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         defaultColor = sr.color;
 		currentTank = gameObject.GetComponent<PlayerInput>();
-		continueShooting = !GameManager.gameManager.getDisplayDeathScreen();
+		currentPlayerIndex = currentTank.playerIndex;
+		continueShooting = GameManager.gameManager.getGamePlaying();
         StartCoroutine(Shoot());   
     }
 	
@@ -58,24 +60,28 @@ public class Shooting : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        while (continueShooting)
+        while (true)
         {
-			
-			GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-			Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-			ProjectileScript projScript = bullet.GetComponent<ProjectileScript>();
-			projScript.setDamageMultiplier(GameManager.gameManager.getDamageMult(currentTank.playerIndex));
-			projScript.setTankIndex(currentTank.playerIndex);
-			rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-			rb.velocity += gameObject.GetComponent<Rigidbody2D>().velocity;
+			if (continueShooting){
+				GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+				Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+				ProjectileScript projScript = bullet.GetComponent<ProjectileScript>();
+				projScript.setDamageMultiplier(GameManager.gameManager.getDamageMult(currentTank.playerIndex));
+				projScript.setTankIndex(currentTank.playerIndex);
+				rb.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+				rb.velocity += gameObject.GetComponent<Rigidbody2D>().velocity;
+			}
 			yield return new WaitForSeconds(delay);
-			
         }
     }
+	
+	// Code to flash the tank red when hit with projectile
+	// Has been moved into ProjectileScript
+	
     void OnCollisionEnter2D(Collision2D col)
     {
 
-        if (col.gameObject.tag == "Projectile" && col.otherRigidbody.gameObject.tag == "Tank")
+        if (col.gameObject.tag == "Projectile" && col.otherRigidbody.gameObject.tag == "Tank" && col.gameObject.GetComponent<ProjectileScript>().getTankIndex() != currentPlayerIndex)
         {
             StartCoroutine("SwitchColor");
             Destroy(col.gameObject);
@@ -90,6 +96,8 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(timeToColor);
         sr.color = defaultColor;
     }
+	
+	
 
 
 }
