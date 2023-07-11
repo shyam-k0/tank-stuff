@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 	
 	[SerializeField] private bool gamePlaying = false;
 	
+	[SerializeField] private int gameTimer;
+	
 
     private void Awake()
 	{
@@ -305,6 +307,8 @@ public class GameManager : MonoBehaviour
 		healthPowerupsTaken[1] = 0;
 		damagePowerupsTaken[0] = 0;
 		damagePowerupsTaken[1] = 0;
+		
+		gameTimer = 0;
 	}
 	
 	public void incrementSpeedPowerupsTaken(int index){
@@ -340,5 +344,9 @@ public class GameManager : MonoBehaviour
 	
 	public void setGamePlaying(bool val){
 		gamePlaying = val;
+	}
+	
+	public void setGameTimer(int time){
+		gameTimer = time;
 	}
 }
