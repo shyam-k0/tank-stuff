@@ -22,16 +22,18 @@ public class MainMenuScript : MonoBehaviour
     }
 	
 	public void localModeSelection(){
-        Time.timeScale = 1.0f;
-		    LeanTween.value(gameObject, (value) => {overlay.color = value;}, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), time).setEase(LeanTweenType.easeInQuad).setOnComplete(() => {
-			SceneManager.LoadScene(1);
-			});
+        
+		LeanTween.value(gameObject, (value) => {overlay.color = value;}, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), time).setEase(LeanTweenType.easeInQuad).setOnComplete(() => {
+		SceneManager.LoadScene(1);
+		});
 		
 	}
 
     public void leaderboardSelection()
     {
-        SceneManager.LoadScene(4);
+        LeanTween.value(gameObject, (value) => {overlay.color = value;}, new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), time).setEase(LeanTweenType.easeInQuad).setOnComplete(() => {
+		SceneManager.LoadScene(4);
+		});
     }
 
     public void MainMenuSelection()
