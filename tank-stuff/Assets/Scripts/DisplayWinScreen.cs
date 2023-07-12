@@ -5,7 +5,7 @@ using UnityEngine;
 public class DisplayWinScreen : MonoBehaviour
 {
     [SerializeField] private GameObject Panel;
-    [SerializeField] private GameObject Button;
+    [SerializeField] private GameObject PlayAgain;
     [SerializeField] private GameObject Scoreboard;
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject Stats;
@@ -26,7 +26,7 @@ public class DisplayWinScreen : MonoBehaviour
         if (check)
         {
             Panel.SetActive(true);
-            Button.SetActive(true);
+            PlayAgain.SetActive(true);
             Scoreboard.SetActive(true);
             MainMenu.SetActive(true);
             Stats.SetActive(true);
