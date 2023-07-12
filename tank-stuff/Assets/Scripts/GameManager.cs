@@ -159,12 +159,12 @@ public class GameManager : MonoBehaviour
 		
 		if (playerNumber == 1)
 		{
-			temp.text = "Player 2 Wins!!";
+			temp.text = (player2Name+ " Wins!!");
 		}
 		else
 		{
-			temp.text = "Player 1 Wins!!";
-		}
+			temp.text = (player1Name + " Wins!!");
+        }
 
         //Time.timeScale = 0f;
 	}
