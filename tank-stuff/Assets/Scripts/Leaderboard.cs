@@ -43,6 +43,8 @@ public class Leaderboard : MonoBehaviour
 	[SerializeField] private Color bronze;
 	
 	private Scene scene;
+
+	public GameObject WinScreen;
 	
 	
     private void Start()
@@ -210,7 +212,7 @@ public class Leaderboard : MonoBehaviour
 		});
 		
 	}
-	
+
 	public void destroyRemainingPlaceholderChildren(int fromIndex){
 		for (int i = fromIndex; i < placeholders.Count; i++){
 			if (placeholders[i].transform.childCount > 0)

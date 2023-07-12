@@ -166,8 +166,14 @@ public class GameManager : MonoBehaviour
 		
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
 		TMP_Text temp = WinScreen.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
-		
-		if (playerNumber == 1)
+
+
+        TMP_Text p1Score = WinScreen.transform.GetChild(8).gameObject.GetComponent<TMP_Text>();
+        TMP_Text p2Score = WinScreen.transform.GetChild(9).gameObject.GetComponent<TMP_Text>();
+
+        p1Score.text = (player1Name + ": " + player1FinalScore);
+        p2Score.text = (player2Name + ": " + player2FinalScore);
+        if (playerNumber == 1)
 		{
 			temp.text = (player2Name+ " Wins!!");
 		}
