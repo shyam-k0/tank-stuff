@@ -14,6 +14,7 @@ public class TankMoveScript : MonoBehaviour
 	//[SerializeField] private float pushForce = 0;
 	[SerializeField] private int player;
 	[SerializeField] private bool continueMoving;
+	[SerializeField] private bool takeInput = false;
 	[SerializeField] private IdleTimeoutScript idleTimeout;
 	
     // Start is called before the first frame update
@@ -29,14 +30,24 @@ public class TankMoveScript : MonoBehaviour
 	// Using FixedUpdate because Physics is used by rigidbody
 	private void FixedUpdate(){
 		if (continueMoving){
-			rb.velocity = transform.up * speed * GameManager.gameManager.getSpeedMult(player);
+			handleInput();
 			//horizontalInput = Input.GetAxisRaw("Horizontal");
-			float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
-			//Debug.Log(rb.velocity);
-			transform.Rotate(Vector3.forward * rotation);
+			takeInput = true;
 		}
+		
+		if (!continueMoving && takeInput){
+			handleInput();
+			takeInput = !GameManager.gameManager.getDisplayDeathScreen();
+		}
+		
 		continueMoving = GameManager.gameManager.getGamePlaying();
 		
+	}
+	
+	private void handleInput(){
+		rb.velocity = transform.up * speed * GameManager.gameManager.getSpeedMult(player);
+		float rotation = -horizontalInput * rotationSpeed * Time.deltaTime;
+		transform.Rotate(Vector3.forward * rotation);
 	}
 	
 	// Code for pushback from wall on collision. Didn't work tho. Scrapped it.

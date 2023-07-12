@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private bool gamePlaying = false;
 	
 	[SerializeField] private int gameTimer;
+	[SerializeField] private GameObject explosion;
 	
 
     private void Awake()
@@ -136,11 +137,15 @@ public class GameManager : MonoBehaviour
 		
 	}
 
+	public void handlePlayerDeath(GameObject player){
+		StartCoroutine(deathScreen(player));
+	}
 	
-	public void deathScreen(GameObject player)
+	public IEnumerator deathScreen(GameObject player)
 	{
 		int playerNumber = (player.GetComponent<PlayerInput>().playerIndex + 1);
 		Debug.Log("Player " + (playerNumber) + " Died!");
+		gamePlaying = false;
 		
 		if (playerNumber == 1)
 		{
@@ -151,9 +156,14 @@ public class GameManager : MonoBehaviour
 			calculateScore(0);
 		}
 		
+		Instantiate(explosion, player.transform.position, player.transform.rotation);
+		Destroy(player);
+		
+		yield return new WaitForSeconds(4f);
+		
 		displayDeathScreen = true;
 		displayLeaderboard = true;
-		gamePlaying = false;
+		
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
 		TMP_Text temp = WinScreen.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
 		
@@ -165,9 +175,9 @@ public class GameManager : MonoBehaviour
 		{
 			temp.text = (player1Name + " Wins!!");
         }
-
-        //Time.timeScale = 0f;
+		
 	}
+	
 	public bool getDisplayDeathScreen()
 	{
 		return displayDeathScreen;

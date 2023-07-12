@@ -515,6 +515,7 @@ MonoBehaviour:
   lossPenalty: 20
   gamePlaying: 0
   gameTimer: 0
+  explosion: {fileID: 3461919917336459625, guid: 00ef64ccf33224944b80c6a32d913b1c, type: 3}
 --- !u!4 &115031491
 Transform:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class PlayerProperties : MonoBehaviour
 			currentHealth = 0;
         healthbar.setHealth(currentHealth);
         if (currentHealth == 0)
-			GameManager.gameManager.deathScreen(gameObject);
+			GameManager.gameManager.handlePlayerDeath(gameObject);
 	}
 	
 	public void addHealth(int val)
