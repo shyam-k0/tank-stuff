@@ -20,6 +20,6 @@ public class OverlayFader : MonoBehaviour
     }
 	
 	public void fadeOut(){
-		LeanTween.value(gameObject, (value) => {gameObject.GetComponent<Image>().color = value;}, new Color(0f, 0f, 0f, 1f), new Color(0f, 0f, 0f, 0f), fadeTime);
+		LeanTween.value(gameObject, (value) => {gameObject.GetComponent<Image>().color = value;}, new Color(0f, 0f, 0f, 1f), new Color(0f, 0f, 0f, 0f), fadeTime).setEase(LeanTweenType.easeOutQuad);
 	}
 }
