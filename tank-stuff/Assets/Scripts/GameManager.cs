@@ -184,10 +184,14 @@ public class GameManager : MonoBehaviour
         if (playerNumber == 1)
 		{
 			winnerName.text = (player2Name);
+			p2Score.color = new Color(0.862169f, 1f, 0.6f);
+			p1Score.color = new Color(1f, 0.7812635f, 0.6f);
 		}
 		else
 		{
 			winnerName.text = (player1Name);
+			p1Score.color = new Color(0.862169f, 1f, 0.6f);
+			p2Score.color = new Color(1f, 0.7812635f, 0.6f);
         }
 		
 	}
