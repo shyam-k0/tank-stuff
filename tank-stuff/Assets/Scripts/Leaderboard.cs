@@ -42,6 +42,8 @@ public class Leaderboard : MonoBehaviour
 	[SerializeField] private Color silver;
 	[SerializeField] private Color bronze;
 	
+	[SerializeField] private Color playerLeaderboardHighlight;
+	
 	private Scene scene;
 
 	public GameObject WinScreen;
@@ -50,6 +52,7 @@ public class Leaderboard : MonoBehaviour
     private void Start()
     {
 		placeholderCount = placeholders.Count;
+		playerLeaderboardHighlight = new Color(0f, 0.9061289f, 1f, 0.5764706f);
 		
         LootLockerSDKManager.StartGuestSession("Player", (response) =>
         {
@@ -181,6 +184,11 @@ public class Leaderboard : MonoBehaviour
                         texts[0].text = (members[i].rank).ToString();
                         texts[1].text = members[i].member_id;
                         texts[2].text = (members[i].score).ToString();
+						
+						if(members[i].member_id == player1Name || members[i].member_id == player2Name){
+							scoreBars[i].color = playerLeaderboardHighlight;
+						}
+						
                     }
                 }
             }

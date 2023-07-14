@@ -2656,12 +2656,18 @@ MonoBehaviour:
   - {fileID: 599214003}
   - {fileID: 1891160394}
   placeholderCount: 0
-  scoreBars: []
+  scoreBars:
+  - {fileID: 1121524392}
+  - {fileID: 794615990}
+  - {fileID: 1248477687}
+  - {fileID: 1057840841}
+  - {fileID: 1381496832}
   refreshTime: 10
   refreshBar: {fileID: 0}
   gold: {r: 1, g: 0.84313726, b: 0, a: 1}
   silver: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
   bronze: {r: 0.8039216, g: 0.49803922, b: 0.19607843, a: 1}
+  playerLeaderboardHighlight: {r: 0, g: 0, b: 0, a: 0}
   WinScreen: {fileID: 0}
 --- !u!1 &1023410076
 GameObject:
