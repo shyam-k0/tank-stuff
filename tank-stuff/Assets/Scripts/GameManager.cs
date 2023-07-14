@@ -159,10 +159,10 @@ public class GameManager : MonoBehaviour
 		Instantiate(explosion, player.transform.position, player.transform.rotation);
 		Destroy(player);
 		displayLeaderboard = true;
-		yield return new WaitForSeconds(4f);
-		
+		yield return new WaitForSeconds(3.5f);
+		DisplayWinScreen dwsScript = GameObject.Find("SpawnManager").GetComponent<DisplayWinScreen>();
 		displayDeathScreen = true;
-		
+		dwsScript.animateInfoBox();
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
 		TMP_Text winnerName = WinScreen.transform.GetChild(1).GetChild(4).gameObject.GetComponent<TMP_Text>();
 
