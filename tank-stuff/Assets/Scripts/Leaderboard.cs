@@ -141,8 +141,18 @@ public class Leaderboard : MonoBehaviour
 					
 					Debug.Log("player1PrevScore : " + player1PreviousScore);
 					Debug.Log("player2PrevScore : " + player2PreviousScore);
-					
-					SubmitScore();
+
+					if (player1FinalScore < 0)
+					{
+						player1FinalScore = 0;
+					}
+                    if (player2FinalScore < 0)
+                    {
+                        player2FinalScore = 0;
+                    }
+
+
+                    SubmitScore();
 					
 				} else {
 					Debug.Log("failed: " + response.Error);
