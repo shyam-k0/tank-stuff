@@ -158,28 +158,36 @@ public class GameManager : MonoBehaviour
 		
 		Instantiate(explosion, player.transform.position, player.transform.rotation);
 		Destroy(player);
-		
+		displayLeaderboard = true;
 		yield return new WaitForSeconds(4f);
 		
 		displayDeathScreen = true;
-		displayLeaderboard = true;
 		
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
-		TMP_Text temp = WinScreen.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
+		TMP_Text winnerName = WinScreen.transform.GetChild(2).gameObject.GetComponent<TMP_Text>();
 
 
-        TMP_Text p1Score = WinScreen.transform.GetChild(8).gameObject.GetComponent<TMP_Text>();
-        TMP_Text p2Score = WinScreen.transform.GetChild(9).gameObject.GetComponent<TMP_Text>();
+        TMP_Text p1Name = WinScreen.transform.GetChild(8).gameObject.GetComponent<TMP_Text>();
+        TMP_Text p2Name = WinScreen.transform.GetChild(9).gameObject.GetComponent<TMP_Text>();
+		TMP_Text p1Score = WinScreen.transform.GetChild(8).GetChild(0).gameObject.GetComponent<TMP_Text>();
+        TMP_Text p2Score = WinScreen.transform.GetChild(9).GetChild(0).gameObject.GetComponent<TMP_Text>();
+		
+		// Win color : (0.862169f, 1f, 0.6f)
+		// Loss color: (1f, 0.7812635f, 0.6f)
 
-        p1Score.text = (player1Name + ": " + player1FinalScore);
-        p2Score.text = (player2Name + ": " + player2FinalScore);
+        p1Name.text = player1Name;
+        p2Name.text = player2Name;
+		
+		p1Score.text = player1FinalScore.ToString();
+		p2Score.text = player2FinalScore.ToString();
+		
         if (playerNumber == 1)
 		{
-			temp.text = (player2Name+ " Wins!!");
+			winnerName.text = (player2Name);
 		}
 		else
 		{
-			temp.text = (player1Name + " Wins!!");
+			winnerName.text = (player1Name);
         }
 		
 	}

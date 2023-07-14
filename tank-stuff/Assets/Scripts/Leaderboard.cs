@@ -74,7 +74,7 @@ public class Leaderboard : MonoBehaviour
 		if (scene.name == "Game")
 		{
 			if (GameManager.gameManager.getDisplayLeaderboard()){
-				getLeaderboard();
+				sendToLeaderboard();
 				GameManager.gameManager.setDisplayLeaderboard(false);
 			}
         }
@@ -82,6 +82,8 @@ public class Leaderboard : MonoBehaviour
 
     public void SubmitScore()
     {
+		bool score1Submitted = false;
+		bool score2Submitted = false;
 
         LootLockerSDKManager.SubmitScore(player1Name, player1FinalScore, leaderboardKey, (response) =>
         {
@@ -89,6 +91,9 @@ public class Leaderboard : MonoBehaviour
             {
                 Debug.Log("Player 1 Score Submit Success");
 				Debug.Log("Player 1: " + player1Name + " " + (player1CurrentScore + player1PreviousScore));
+				score1Submitted = true;
+				if (score1Submitted && score2Submitted)
+					getLeaderboard();
             }
             else
             {
@@ -102,6 +107,9 @@ public class Leaderboard : MonoBehaviour
             {
                 Debug.Log("Player 2 Score Submit Success");
 				Debug.Log("Player 2: " + player2Name + " " + (player2CurrentScore + player2PreviousScore));
+				score2Submitted = true;
+				if (score1Submitted && score2Submitted)
+					getLeaderboard();
             }
             else
             {

@@ -10,8 +10,9 @@ public class DisplayWinScreen : MonoBehaviour
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject playerWinText;
     [SerializeField] private GameObject ScoresTitle;
-    [SerializeField] private GameObject player1Score;
-    [SerializeField] private GameObject player2Score;
+    [SerializeField] private GameObject player1ScoreName;
+    [SerializeField] private GameObject player2ScoreName;
+	[SerializeField] private GameObject infoBox;
 
 
     // Start is called before the first frame update
@@ -32,8 +33,9 @@ public class DisplayWinScreen : MonoBehaviour
             MainMenu.SetActive(true);
             playerWinText.SetActive(true);
             ScoresTitle.SetActive(true);
-            player1Score.SetActive(true);
-            player2Score.SetActive(true);
+            player1ScoreName.SetActive(true);
+            player2ScoreName.SetActive(true);
+			infoBox.SetActive(true);
         }
     }
 }
