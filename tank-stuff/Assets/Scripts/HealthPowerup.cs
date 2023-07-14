@@ -26,4 +26,13 @@ public class HealthPowerup : MonoBehaviour
     {
         Destroy(gameObject, 6);
     }
+
+    public void Update()
+    {
+        if (GameManager.gameManager.getGamePlaying() == false)
+        {
+            Destroy(gameObject);
+        }
+
+    }
 }
