@@ -164,13 +164,13 @@ public class GameManager : MonoBehaviour
 		displayDeathScreen = true;
 		
 		WinScreen = GameObject.FindWithTag("PlayerWinScreen");
-		TMP_Text winnerName = WinScreen.transform.GetChild(2).gameObject.GetComponent<TMP_Text>();
+		TMP_Text winnerName = WinScreen.transform.GetChild(1).GetChild(4).gameObject.GetComponent<TMP_Text>();
 
 
-        TMP_Text p1Name = WinScreen.transform.GetChild(8).gameObject.GetComponent<TMP_Text>();
-        TMP_Text p2Name = WinScreen.transform.GetChild(9).gameObject.GetComponent<TMP_Text>();
-		TMP_Text p1Score = WinScreen.transform.GetChild(8).GetChild(0).gameObject.GetComponent<TMP_Text>();
-        TMP_Text p2Score = WinScreen.transform.GetChild(9).GetChild(0).gameObject.GetComponent<TMP_Text>();
+        TMP_Text p1Name = WinScreen.transform.GetChild(1).GetChild(9).gameObject.GetComponent<TMP_Text>();
+        TMP_Text p2Name = WinScreen.transform.GetChild(1).GetChild(10).gameObject.GetComponent<TMP_Text>();
+		TMP_Text p1Score = WinScreen.transform.GetChild(1).GetChild(9).GetChild(0).gameObject.GetComponent<TMP_Text>();
+        TMP_Text p2Score = WinScreen.transform.GetChild(1).GetChild(10).GetChild(0).gameObject.GetComponent<TMP_Text>();
 		
 		// Win color : (0.862169f, 1f, 0.6f)
 		// Loss color: (1f, 0.7812635f, 0.6f)

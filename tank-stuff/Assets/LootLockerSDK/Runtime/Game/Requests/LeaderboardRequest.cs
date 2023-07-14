@@ -1,5 +1,8 @@
 using System;
 using LootLocker.Requests;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 
 namespace LootLocker.Requests
@@ -193,9 +196,18 @@ namespace LootLocker
             	onComplete?.Invoke(LootLockerResponseFactory.InputUnserializableError<LootLockerSubmitScoreResponse>());
             	return;
             }
-
+			
             string json = LootLockerJson.SerializeObject(data);
+			
+			
+			JObject jsonObject = JObject.Parse(json);
+			
+			if(data.score == 0)
+				jsonObject["score"] = 0;
 
+			json = jsonObject.ToString();
+			
+			
             string endPoint = string.Format(requestEndPoint.endPoint, id);
 
             LootLockerServerRequest.CallAPI(endPoint, requestEndPoint.httpMethod, json, onComplete: (serverResponse) => { LootLockerResponse.Deserialize(onComplete, serverResponse); });

@@ -22,7 +22,8 @@ namespace LootLocker
         public static readonly JsonSerializerSettings Default = new JsonSerializerSettings
         {
             ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() },
-            Formatting = Formatting.None
+            Formatting = Formatting.None,
+			DefaultValueHandling = DefaultValueHandling.Include
         };
 #else
         public static readonly JsonOptions Default = new JsonOptions(JsonSerializationOptions.Default & ~JsonSerializationOptions.SkipGetOnly);

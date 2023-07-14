@@ -121,13 +121,13 @@ public class Leaderboard : MonoBehaviour
     public void sendToLeaderboard()
         {
         
-            player1Name = GameManager.gameManager.getName(0);
-            player2Name = GameManager.gameManager.getName(1);
+            player1Name = GameManager.gameManager.getName(1);
+            player2Name = GameManager.gameManager.getName(2);
 			playerMemberIDs[0] = player1Name;
 			playerMemberIDs[1] = player2Name;
 			
-            player1CurrentScore = GameManager.gameManager.getScore(0);
-            player2CurrentScore = GameManager.gameManager.getScore(1);
+            player1CurrentScore = GameManager.gameManager.getScore(1);
+            player2CurrentScore = GameManager.gameManager.getScore(2);
 			
 			LootLockerSDKManager.GetByListOfMembers(playerMemberIDs, leaderboardKey, (response) =>
 			{
